@@ -1,0 +1,36 @@
+<div class="container">
+
+<button type="button"
+     (click)="getPlaces()"><span class="fa fa-map-marker"></span> Show Places
+</button>
+
+Length: {{places.length}}
+<br><br>
+
+
+      <sebm-google-map
+           [latitude]="latitude"
+           [longitude]="longitude"
+           [zoom]="zoom"
+           >
+
+           <sebm-google-map-marker
+              *ngFor="let place of places"
+              [latitude]="place.latitude"
+              [longitude]="place.longitude"
+              [title]="places.address"
+              [markerDraggable]="draggable"
+              >
+
+              <sebm-google-map-info-window>
+                <p>{{place.address}}</p>
+                <small> [ {{place.latitude}}, {{place.longitude}} ]</small>
+              </sebm-google-map-info-window>
+
+
+            </sebm-google-map-marker>
+
+      </sebm-google-map>
+
+
+</div>

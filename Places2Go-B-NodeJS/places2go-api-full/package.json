@@ -1,0 +1,17 @@
+{
+  "name": "places2go-api-full",
+  "version": "1.0.0",
+  "description": "API REST Full",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/maps": "^0.3.1",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.8.6"
+  }
+}

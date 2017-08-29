@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>API REST: Place2Go</title>
+
+  <!-- bootstrap 4 CDN Ini-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <!-- bootstrap 4 CDN Fin -->
+
+</head>
+<body>
+
+  <div class="container">
+    <br> <p class="h3">Places2Go REST API</p><br>
+
+
+    <div id="accordion1" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                GET /places
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              Retorna todos los lugares <b>(Places)</b> guardados. <br><br>
+
+
+
+<!-- Ejemplo Inicio -->
+<p>
+  <a class="btn btn-primary btn-info btn-sm" data-toggle="collapse" href="#collapse1_ejemplo" aria-expanded="false" aria-controls="collapse1_ejemplo">
+  Mas info
+  </a>
+</p>
+<div class="collapse" id="collapse1_ejemplo">
+  <div class="card card-block">
+
+<div class="alert alert-warning" role="alert">
+<small>
+<pre class="highlight">
+GET /places HTTP/1.1
+Host: 54.68.83.6:3000
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: es-ES
+</pre>
+  <hr>
+  <pre>
+  [{
+  	"_id": "58c8d88b83ca2741d23c1fdc",
+  	"address": "Cenotes",
+  	"addressFmt": "Cenotes, Mexico",
+  	"__v": 0,
+  	"date": "2017-03-15T06:00:43.967Z",
+  	"loc": {
+  		"coordinates":
+  		  [-96.15075329999999,
+  		    18.084935],
+  		"type": "Point"
+  	}
+  }, {
+  	"_id": "58c8d8b483ca2741d23c1fdd",
+  	"address": "quito",
+  	"addressFmt": "Quito, Ecuador",
+  	"__v": 0,
+  	"date": "2017-03-15T06:01:24.693Z",
+  	"loc": {
+  		"coordinates":
+  		  [-78.4678382,
+  		    -0.1806532],
+  		"type": "Point"
+  	}
+  }]
+  </pre>
+</small>
+</div>
+
+  </div>
+</div>
+<!-- Ejemplo fin-->
+
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+<br>
+
+    <div id="accordion2" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                POST /places
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne2" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              Agrega el nuevo lugar <b>(Place)</b> recibido. <br><br>
+
+
+
+<!-- Ejemplo Inicio -->
+<p>
+  <a class="btn btn-primary btn-info btn-sm" data-toggle="collapse" href="#collapse4_ejemplo" aria-expanded="false" aria-controls="collapse4_ejemplo">
+  Mas info
+  </a>
+</p>
+<div class="collapse" id="collapse4_ejemplo">
+  <div class="card card-block">
+
+<div class="alert alert-warning" role="alert">
+<small>
+<pre class="highlight">
+  POST /places HTTP/1.1
+  Host: 54.68.83.6:3000
+  Content-Length: 149
+  Accept: application/json, text/plain, */*
+  content-type: application/json
+  Accept-Encoding: gzip, deflate
+  Accept-Language: es-ES,
+
+  {
+    "address": "Bariloche",
+    "addressFmt": "San Carlos de Bariloche, Río Negro, Argentina",
+    "latitude": -41.1334722,
+    "longitude": -71.3102778
+  }
+</pre>
+  <hr>
+  <pre>
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, PATCH, DELETE
+Access-Control-Allow-Headers: X-Requested-With,charset,content-type
+Content-Type: application/json; charset=utf-8
+Content-Length: 223
+ETag: W/"df-fUzORb2usqLy2T/FfRMj8g8AofM"
+Date: Wed, 15 Mar 2017 17:50:14 GMT
+Proxy-Connection: Keep-alive
+
+{
+"__v": 0,
+"address": "Bariloche",
+"addressFmt": "San Carlos de Bariloche, Río Negro, Argentina",
+"_id": "58c97ed665383147e4fd992f",
+"date": "2017-03-15T17:50:14.822Z",
+"loc": {
+	"coordinates": [-71.3102778, -41.1334722],
+	"type": "Point"
+}
+}
+
+
+  </pre>
+</small>
+</div>
+
+  </div>
+</div>
+<!-- Ejemplo fin-->
+
+
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+<br>
+
+    <div id="accordion3" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                DELETE /places/:id
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne3" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              Elimina el lugar <b>(Place)</b> indicado por su <b>:id</b>.<br><br>
+
+
+
+<!-- Ejemplo Inicio -->
+<p>
+  <a class="btn btn-primary btn-info btn-sm" data-toggle="collapse" href="#collapse2_ejemplo" aria-expanded="false" aria-controls="collapse2_ejemplo">
+  Mas info
+  </a>
+</p>
+<div class="collapse" id="collapse2_ejemplo">
+  <div class="card card-block">
+
+<div class="alert alert-warning" role="alert">
+<small>
+<pre class="highlight">
+DELETE /places/58c8d88b83ca2741d23c1fdc HTTP/1.1
+Host: 54.68.83.6:3000
+Content-Length: 86
+Content-Type: application/json
+Accept: */*
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: es-ES
+
+{
+	"address" : "Iruya",
+	"latitude" : -22.7913886,
+	"longitude" : -65.21593310000003
+}
+</pre>
+  <hr>
+  <pre>
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, PATCH, DELETE
+Access-Control-Allow-Headers: X-Requested-With,charset,content-type
+Content-Type: text/plain; charset=utf-8
+Content-Length: 2
+ETag: W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"
+Date: Wed, 15 Mar 2017 17:33:46 GMT
+Proxy-Connection: Keep-alive
+
+OK
+  </pre>
+</small>
+</div>
+
+  </div>
+</div>
+<!-- Ejemplo fin-->
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+<br>
+
+    <div id="accordion4" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="headingOne">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordion4" href="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
+                GET /geocode/:address
+              </a>
+            </h5>
+          </div>
+
+          <div id="collapseOne4" class="collapse" role="tabpanel" aria-labelledby="headingOne">
+            <div class="card-block">
+              Dada una dirección <b>(address)</b> retorna las coordenadas <b>latitude</b> y <b>longitude</b>.
+
+
+
+<br><br>
+
+
+
+
+<!-- Ejemplo Inicio -->
+<p>
+  <a class="btn btn-primary btn-info btn-sm" data-toggle="collapse" href="#collapse3_ejemplo" aria-expanded="false" aria-controls="collapse3_ejemplo">
+  Mas info
+  </a>
+</p>
+<div class="collapse" id="collapse3_ejemplo">
+  <div class="card card-block">
+
+<div class="alert alert-warning" role="alert">
+<small>
+<pre class="highlight">
+GET /geocode/Bariloche HTTP/1.1
+Host: 54.68.83.6:3000
+Accept: application/json, text/plain, */*
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: es-ES
+</pre>
+  <hr>
+  <pre>
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, PATCH, DELETE
+Access-Control-Allow-Headers: X-Requested-With,charset,content-type
+Content-Type: application/json; charset=utf-8
+Content-Length: 1378
+ETag: W/"562-xszhbsBW9/09dJgCTzn93slVVdY"
+Date: Wed, 15 Mar 2017 17:50:11 GMT
+Proxy-Connection: Keep-alive
+
+{
+"status": 200,
+"headers": {
+	"content-type": "application/json; charset=UTF-8",
+	"date": "Wed, 15 Mar 2017 17:50:00 GMT",
+	"expires": "Thu, 16 Mar 2017 17:50:00 GMT",
+	"cache-control": "public, max-age=86400",
+	"access-control-allow-origin": "*",
+	"server": "mafe",
+	"x-xss-protection": "1; mode=block",
+	"x-frame-options": "SAMEORIGIN",
+	"alt-svc": "quic=\":443\"; ma=2592000; v=\"36,35,34\"",
+	"accept-ranges": "none",
+	"vary": "Accept-Language,Accept-Encoding",
+	"connection": "close"
+},
+"json": {
+	"results": [{
+		"address_components": [{
+			"long_name": "San Carlos de Bariloche",
+			"short_name": "San Carlos de Bariloche",
+			"types": ["locality", "political"]
+		}, {
+			"long_name": "Bariloche",
+			"short_name": "Bariloche",
+			"types": ["administrative_area_level_2", "political"]
+		}, {
+			"long_name": "Río Negro",
+			"short_name": "Río Negro",
+			"types": ["administrative_area_level_1", "political"]
+		}, {
+			"long_name": "Argentina",
+			"short_name": "AR",
+			"types": ["country", "political"]
+		}],
+		"formatted_address": "San Carlos de Bariloche, Río Negro, Argentina",
+		"geometry": {
+			"bounds": {
+				"northeast": {
+					"lat": -41.068724,
+					"lng": -71.18855289999999
+				},
+				"southwest": {
+					"lat": -41.2011185,
+					"lng": -71.4912761
+				}
+			},
+			"location": {
+				"lat": -41.1334722,
+				"lng": -71.3102778
+			},
+			"location_type": "APPROXIMATE",
+			"viewport": {
+				"northeast": {
+					"lat": -41.068724,
+					"lng": -71.18855289999999
+				},
+				"southwest": {
+					"lat": -41.2011185,
+					"lng": -71.4912761
+				}
+			}
+		},
+		"place_id": "ChIJ5WDIIBV7GpYRZZp7y5euEII",
+		"types": ["locality", "political"]
+	}],
+	"status": "OK"
+}
+}
+  </pre>
+</small>
+</div>
+
+  </div>
+</div>
+<!-- Ejemplo fin-->
+
+
+
+
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </div>
+</body>
+</html>

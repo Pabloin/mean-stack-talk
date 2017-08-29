@@ -1,0 +1,9 @@
+.sebm-google-map-container {
+  /*
+  height: 300px;
+  */ /* zoom = 6 */
+
+  height: 500px;
+   width: auto;
+   /* zoom = 11 */
+}

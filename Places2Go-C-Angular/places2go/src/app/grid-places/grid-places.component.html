@@ -1,0 +1,53 @@
+<div class="container">
+
+<app-view-place [place]="detailView.place"></app-view-place>
+
+<div class="container">
+
+
+
+  <div class="card">
+
+    <div class="card-header">
+       Saved Places [ {{places.length}} ];
+    </div>
+
+    <div class="card-block">
+
+        <!--  TABLE INICIO --->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Place Name</th>
+              <!-- <th>Place Fmt</th> -->
+              <th class="hidden-md-down">[ Lat, Lng ]</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let place of places">
+              <td>{{ place.address  }}</td>
+              <!-- <td>{{ place.addressFmt  }}</td> -->
+              <td class="hidden-md-down"><small>[ {{ place.latitude }}, {{ place.longitude }} ]</small></td>
+              <td><button type="button" class="btn btn-link"
+data-toggle="modal" data-target="#myModal"
+                (click)="viewPlace(place)"><span class="fa fa-search-plus fa-lg"></span> view</button></td>
+              <td><button type="button" class="btn btn-link" (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
+          </tr>
+
+          </tbody>
+          </table>
+
+        <!-- TABLE FIN -->
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+</div>
