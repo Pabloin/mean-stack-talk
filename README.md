@@ -1,4 +1,4 @@
-# 2017-09-05 CODE LABS SOBRE MEAN STACK: PARTE I
+# 2017-09-05 Code Labs sobre MEAN STACK: PARTE I
 
 
 ## 1. Introduction
@@ -15,7 +15,7 @@
 ### 1.2. Clonamos el repo de GitHub 
 
 - En el escritorio creamos una carpeta "mean"
-- En el browser accedemos a https://github.com/Pabloin
+- Clonamos el repo **mean-stack-talk** de https://github.com/Pabloin
 
 ```sh
 $ cd Escritorio
@@ -30,10 +30,7 @@ $ ls -la
 
 - [Visual Studio Code](https://code.visualstudio.com) 
 
-Está instalado (sino el .deb)
-
-Abrimos la carpeta "mean/mean-stack-talk" en el Visual Studio Code.
-
+Abrimos la carpeta "mean/mean-stack-talk" en el Visual Studio Code (Si no está, instalamos el .deb)
 
 ### 1.4. Software Robomongo
 
@@ -51,13 +48,30 @@ Dejamos el robo3t abierto
 
 ## 2. MongoDB
 
-### 2.1. Conexion Robomongo a MongoDB en AWS
+### 2.1. MongoDB instalado en AWS
 
 **Objetivos**:
 - Utilizar MongoDB sin instalarla localmente aún
 - Conectar Robomongo a MongoDB en AWS
 - Insert sobre una base que no existe
-- 
+- Query sobre elementos geo referenciados 
+    - Base Restaurants
+    - Base Place2Go (Torre BBVA)
+
+
+### 2.1.1. Conexion Robomongo a MongoDB en AWS
+
+- Desde Robomongo Create:
+  - **Name:** Place2Go AWS
+  - **Addres:** [Place2Go BD]
+  - **Port:** [27017]
+
+
+### 2.2. MongoDB instalado en Linux local
+
+
+### 2.3. MongoDB instalado en Linux local desde un Docker
+
 
 
 
