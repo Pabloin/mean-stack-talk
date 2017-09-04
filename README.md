@@ -119,6 +119,8 @@ Insert sobre una base que no existe, archivo [02 Sin Equema](https://github.com/
 Seguimos al [MongoDB Geospatial Tutorial](https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/) que utiliza una base de datos de Restaurantes y Vecindarios para realizar consulta Geoespaciales 
 
 
+**Demo**: Creamos y ejecutamos lo siguientes en la instancia EC2 y luego en cada linux
+
 **Step 01:** Download json data
 
 ```sh
