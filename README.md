@@ -218,7 +218,24 @@ Podemos crearnos nuestra propia imagen y publicarla en una docker registry como 
 
 En nuestro caso utilizaremos la imagen MongoDB de la charla de Mean Stack, que se encuentra [publicada en Docker hub](https://hub.docker.com/r/pabloezequiel/my_mongodb/) 
 
-Comandos docker utiles:
+
+### 2.3.1 Un poco de Docker ... repaso
+
+**Error**: Cannot connect to the Docker daemon. Is the docker daemon?
+
+Docker esta instalado pero no running:
+
+```sh
+$ sudo service docker stop
+$ sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
+$ sudo docker info
+$ sudo usermod -aG docker ninja
+```
+
+tomado de [este link](https://www.upcloud.com/support/how-to-configure-docker-swarm)
+
+
+**Comandos docker utiles:**
 
 Bajo la imagen y la borro ... 
 
@@ -240,6 +257,8 @@ $ sudo docker run -p 27017:27017 -i -t pabloezequiel/my_mongodb:1.0.0 &
 $ sudo docker ps  -l
 $ sudo docker logs 6b0ace04738b -f
 ```
+
+
 
 ### Data
 
