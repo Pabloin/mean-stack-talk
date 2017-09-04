@@ -106,16 +106,93 @@ db.places.find({
        }
    })
  */
+
+// DELETE --- 
+// db.getCollection('places').find({ address : { $regex : "panama" } })
+// db.getCollection('places').deleteOne({ address : { $regex : "panama" } })
 ```
 
 Insert sobre una base que no existe, archivo [02 Sin Equema](https://github.com/Pabloin/mean-stack-talk/blob/master/Places2Go-A-MongoDB/02%20Sin%20Equema.js)
 
+### 2.1.3. Query Complejos desde Robomongo
 
-###### Links de la sección
+Seguimos al [MongoDB Geospatial Tutorial](https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/) que utiliza una base de datos de Restaurantes y Vecindarios para realizar consulta Geoespaciales 
+
+
+**Step 01:** Download json data
+
+```sh
+$ cd /tmp/
+$ mkdir jsonGeodata
+$ cd jsonGeodata
+
+$ wget -O neighborhoods.json https://raw.githubusercontent.com/mongodb/docs-assets/geospatial/neighborhoods.json
+$ wget -O restaurants.json  https://raw.githubusercontent.com/mongodb/docs-assets/geospatial/restaurants.json
+
+$ ls -la
+```
+
+
+**Step 02:** Import data en MongoDB
+```sh
+$ mongoimport -d mongoExample -c restaurants --file restaurants.json
+$ mongoimport -d mongoExample -c neighborhoods --file neighborhoods.json
+```
+
+
+**Step 03:** Create Geo Index
+```sh
+db.neighborhoods.createIndex( { geometry : '2dsphere' } );
+db.restaurants.createIndex(   { location : '2dsphere'  } );
+db.neighborhoods.findOne();
+db.restaurants.findOne();
+```
+
+
+**Step 04:** Query Sorted with $nearSphere
+```sh
+db.restaurants.find({    
+    location : {
+        $nearSphere : {
+            $geometry : {
+                    type : "Point",
+                    coordinates : [ -73.93414657, 40.82302903 ]
+             },
+             $maxDistance : 400
+        }
+    }   
+}).count();
+```
+
+**Step 05:** Intersections: Restaurants in the Neighborhoods
+
+```sh
+var neighborhood = db.neighborhoods.findOne( { 
+   geometry: { 
+      $geoIntersects: { 
+           $geometry: { 
+            type: "Point", 
+            coordinates: [ -73.93414657, 40.82302903 ]
+            } 
+      } 
+ } 
+} )
+db.restaurants.find( { 
+  location: 
+   { $geoWithin:
+     { $geometry: neighborhood.geometry } 
+   } 
+} ).count()
+```
+
+
+##### Links de la sección 2.1
 - [MongoDB Geospatial Tutorial](https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/)
 - [MongoDB GeoJson Objects](https://docs.mongodb.com/manual/tutorial/query-a-2dsphere-index/#intersections-of-geojson-objects)
 - [Búsquedas en MongoDB](http://www.notodocodigo.com/introduccion-a-mongodb/busquedas-en-mongodb)
-[Búsquedas en MongoDB](http://www.notodocodigo.com/introduccion-a-mongodb/busquedas-en-mongodb)
+  
+
+
 
 
 
