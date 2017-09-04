@@ -61,13 +61,58 @@ Dejamos el robo3t abierto
 
 ### 2.1.1. Conexion Robomongo a MongoDB en AWS
 
-Desde Robomongo Create:
+Desde Robomongo **Create**:
 
 | Attr | Val |
 | ------ | ------ |
 | Name | "Place2Go AWS" |
-| Address | [Data](#data) |
+| Address | [IP AWS](#data) |
 | Port | 27017 |
+
+Desde Robomongo **Query Simples**:
+
+
+```javascript
+// Recupera todos los lugares de la colección
+db.getCollection('places').find({})
+```
+
+Ejercicios:
+
+```javascript
+// Recuperar todos los lugares de la colección con nombre "Torre"
+// db.getCollection('places').find({})
+
+// QUERY ----
+// db.getCollection('places').find({ address :  "florida"})
+// db.getCollection('places').find({ address :  "river plate"})
+// db.getCollection('places').find({ address :  "river"})  
+// db.getCollection('places').find({ address :       { $regex : "shopping"}    })  
+// db.getCollection('places').findOne({ address :    { $regex : "shopping"}    })  
+// db.getCollection('places').find({ address : { $regex : "torre"}  }) 
+// db.getCollection('places').find({ address : { $regex : "torre"}  }).forEach(printjson)
+// db.getCollection('places').find({ address : { $regex : "torre"}  },  {_id:false}).forEach(print)
+
+/*
+var torreBBVA = [ -58.3700828,  -34.597803  ];
+
+db.places.find({
+     loc:
+       { $near : {
+            $geometry: { type: "Point",  coordinates: torreBBVA },
+            $maxDistance: 3500
+          }
+       }
+   })
+ */
+```
+
+###### Links de la sección
+- [MongoDB Geospatial Tutorial](https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/)
+- [MongoDB GeoJson Objects](https://docs.mongodb.com/manual/tutorial/query-a-2dsphere-index/#intersections-of-geojson-objects)
+- [Búsquedas en MongoDB](http://www.notodocodigo.com/introduccion-a-mongodb/busquedas-en-mongodb)
+[Búsquedas en MongoDB](http://www.notodocodigo.com/introduccion-a-mongodb/busquedas-en-mongodb)
+
 
 
 ### 2.2. MongoDB instalado en Linux local
@@ -79,7 +124,9 @@ Desde Robomongo Create:
 
 ### Data
 
-54.68.83.6:4200
+- IP AWS 54.68.83.6
+
+
 
 
 
