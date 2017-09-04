@@ -347,7 +347,20 @@ Que escucha en (http://localhost:3500/hello)
 
 ### 3.3. Levantar el proyecto sin API de Google 
 
+Compilamos el proyecto **places2go-api** y lo levantamos **node app.js**
+Como el proyecto utiliza la base datos, el docker de Mongo DB debe estar levantado.
 
+```sh
+$ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
+$ cd places2go-api
+$ cat package.json
+$ npm install
+$ node app.js
+```
+
+**Observamos:** si la base estaba vacia, el driver **Mongoose** la crea, incluso con un indice geo referencial de acuerdo a lo indicado en el esquema.
+
+**Observamos:** utilizzando el browser, podemos consultar por GET (http://localhost:3000/places)
 
 ### 3.3. Levantar el proyecto con API de Google 
 
