@@ -347,11 +347,18 @@ app.get('/hello', function(req, res) {
     res.send("Hello World!")
 })
 
-app.listen(3000, function () {
-    console.log('#002: Places2go listening on port 3000!');
+app.listen(3500, function () {
+    console.log('#001: Hello-NodeJS listening on port 3500!');
 })
 ```
 
+Ejecutamos la app con:
+
+```sh
+$ node app.js
+```
+
+Que escucha en (http://localhost:3500/hello)
 
 ### 3.3. Levantar el proyecto sin API de Google 
 
