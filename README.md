@@ -78,6 +78,16 @@ Desde Robomongo **Create**:
 db.getCollection('places').find({})
 ```
 
+por las dudas: antes de los ejercicios: backup de los datos de la base
+
+```sh
+$ cd /tmp
+$ mkdir jsonDataPlaces2Go
+$ cd jsonDataPlaces2Go
+$ mongoexport -d places2go -c places -o places.json
+$ ls -la
+```
+
 Ejercicios:
 
 ```javascript
@@ -113,6 +123,7 @@ db.places.find({
 ```
 
 Insert sobre una base que no existe, archivo [02 Sin Equema](https://github.com/Pabloin/mean-stack-talk/blob/master/Places2Go-A-MongoDB/02%20Sin%20Equema.js)
+
 
 ### 2.1.3. Query Complejos desde Robomongo
 
@@ -196,14 +207,39 @@ db.restaurants.find( {
 
 
 
-
-
 ### 2.2. MongoDB instalado en Linux local
 
 
 ### 2.3. MongoDB instalado en Linux local desde un Docker
 
+En las imágenes linux tenemos instalado docker, con lo cual una de las formas más sencillas de poder utilizar MongoDB es a través de la instalación de una imagen docker:
 
+Podemos crearnos nuestra propia imagen y publicarla en una docker registry como [Docker Hub](https://hub.docker.com/)
+
+En nuestro caso utilizaremos la imagen MongoDB de la charla de Mean Stack, que se encuentra [publicada en Docker hub](https://hub.docker.com/r/pabloezequiel/my_mongodb/) 
+
+Comandos docker utiles:
+
+Bajo la imagen y la borro ... 
+
+```sh
+$ sudo docker pull pabloezequiel/my_mongodb:1.0.0
+$ sudo docker images
+¢ sudo docker rmi -f 7e2284a4b583
+```
+
+Bajo la imagen, la ejecuco, la paro, la ejecuto de nuevo... consulto los logs:
+
+```sh
+$ sudo docker pull pabloezequiel/my_mongodb:1.0.0
+$ sudo docker run -p 27017:27017 -i -t pabloezequiel/my_mongodb:1.0.0 &
+$ sudo docker ps -l
+$ sudo docker ps -a
+$ sudo docker rm ced9cd2512c2
+$ sudo docker run -p 27017:27017 -i -t pabloezequiel/my_mongodb:1.0.0 &
+$ sudo docker ps  -l
+$ sudo docker logs 6b0ace04738b -f
+```
 
 ### Data
 
