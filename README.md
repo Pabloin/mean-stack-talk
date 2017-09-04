@@ -328,9 +328,27 @@ agergamos unas dependecias
 $ npm install mongoose --save
 $ npm install express --save
 $ npm install body-parser --save --save-dev
+$ ls -la
 $ cat package.json
 ```
 
+agergamos aplicación **hello**
+
+```javascript
+var express = require('express')
+var app = express()
+
+/**
+* GET /hello
+*/
+app.get('/hello', function(req, res) {
+    res.send("Hello World!")
+})
+
+app.listen(3000, function () {
+    console.log('#002: Places2go listening on port 3000!');
+})
+```
 
 
 ### 3.3. Levantar el proyecto sin API de Google 
