@@ -219,8 +219,19 @@ $ echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongo
 $ sudo apt-get update
 $ sudo apt-get install -y mongodb-org
 $ sudo service mongod start
+$ tail -f /var/log/mongodb/mongod.log 
 ```
 
+otros comandos de mongod
+
+```sh
+$ sudo service mongod stop
+$ sudo service mongod restart
+$ cat /etc/mongod.conf
+
+# Otra forma de levantar mongodb
+# $ mongod --dbpath /usr/local/var/data/db
+```
 
 ### 2.3. MongoDB instalado en Linux local desde un Docker
 
