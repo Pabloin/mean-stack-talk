@@ -61,10 +61,13 @@ Dejamos el robo3t abierto
 
 ### 2.1.1. Conexion Robomongo a MongoDB en AWS
 
-- Desde Robomongo Create:
-  - **Name:** Place2Go AWS
-  - **Addres:** [Place2Go BD]
-  - **Port:** [27017]
+Desde Robomongo Create:
+
+| Attr | Val |
+| ------ | ------ |
+| Name | "Place2Go AWS" |
+| Address | [Data](#data) |
+| Port | 27017 |
 
 
 ### 2.2. MongoDB instalado en Linux local
@@ -73,6 +76,10 @@ Dejamos el robo3t abierto
 ### 2.3. MongoDB instalado en Linux local desde un Docker
 
 
+
+### Data
+
+54.68.83.6:4200
 
 
 
