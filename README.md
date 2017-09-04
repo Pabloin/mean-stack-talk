@@ -312,14 +312,26 @@ $ npm --version
 
 ### 3.2. Creamos un proyecto nodeJS from scratch
 
-Con NodeJS y NPM instalado, creamos un proyecto from scratch
-
+Con NodeJS y NPM instalado, creamos un proyecto from scratch con **npm init** que nos generara el **package.json**
 
 ```sh
 $ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
 $ mkdir helloNodeJS
 $ cd helloNodeJS
+$ npm init
+$ cat package.json
 ```
+
+agergamos unas dependecias
+
+```sh
+$ npm install mongoose --save
+$ npm install express --save
+$ npm install body-parser --save --save-dev
+$ cat package.json
+```
+
+
 
 ### 3.3. Levantar el proyecto sin API de Google 
 
