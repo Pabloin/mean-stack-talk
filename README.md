@@ -209,6 +209,18 @@ db.restaurants.find( {
 
 ### 2.2. MongoDB instalado en Linux local
 
+Basado en el tuorial oficial [Install Mongo DB on ubuntu](https://docs.mongodb.com/master/tutorial/install-mongodb-on-ubuntu/)
+Los linux son ubuntu 16
+
+```sh
+$ lsb_release -a
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+$ echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+$ sudo service mongod start
+```
+
 
 ### 2.3. MongoDB instalado en Linux local desde un Docker
 
@@ -226,7 +238,8 @@ En nuestro caso utilizaremos la imagen MongoDB de la charla de Mean Stack, que s
 Docker esta instalado pero no running:
 
 ```sh
-$ sudo service docker stop
+$ sudo usermod -aG docker $(whoami)
+¢ sudo service docker stop
 $ sudo nohup docker daemon -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock &
 $ sudo docker info
 $ sudo usermod -aG docker ninja
