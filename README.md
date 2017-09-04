@@ -334,6 +334,8 @@ $ cat package.json
 
 agergamos aplicación **hello**
 
+en un archivo nuevo **app.js** copiamos:
+
 ```javascript
 var express = require('express')
 var app = express()
