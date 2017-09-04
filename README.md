@@ -290,23 +290,38 @@ $ sudo docker logs 6b0ace04738b -f
 
 ## 3. Node.JS y Express
 
-### 3.1. Instalar Node.JS y crear un proyecto vacio
+### 3.1. Instalar Node.JS y NPM
 
 Si instanalmos NodeJS desde los repo, nos va a dar la version estable v4.2.6
 NodeJS esta por su version 8.4.0 para instanalarla [Seguimos la Guía] (http://www.vozidea.com/como-instalar-node-js-en-ubuntu-o-debian)
 
+Nota: la opción **-y** es para que la instalación no sea interactiva
+
 ```sh
-$ sudo apt-get --purge remove node
-$ sudo apt-get --purge remove nodejs
-$ sudo apt-get install npm
+$ sudo apt-get -y --purge remove node
+$ sudo apt-get -y --purge remove nodejs
+$ sudo apt-get -y install npm
 
 $ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-$ sudo apt-get install nodejs
+$ sudo apt-get -y install nodejs
 
-$ sudo apt-get install build-essential
+$ sudo apt-get -y install build-essential
+$ node --version
+$ npm --version
 ```
 
-### 3.2. Levantar el proyecto sin API de Google 
+### 3.2. Creamos un proyecto nodeJS from scratch
+
+Con NodeJS y NPM instalado, creamos un proyecto from scratch
+
+
+```sh
+$ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
+$ mkdir helloNodeJS
+$ cd helloNodeJS
+```
+
+### 3.3. Levantar el proyecto sin API de Google 
 
 
 
