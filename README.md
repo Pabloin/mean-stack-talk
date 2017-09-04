@@ -53,10 +53,10 @@ Dejamos el robo3t abierto
 **Objetivos**:
 - Utilizar MongoDB sin instalarla localmente aún
 - Conectar Robomongo a MongoDB en AWS
-- Insert sobre una base que no existe
 - Query sobre elementos geo referenciados 
     - Base Restaurants
     - Base Place2Go (Torre BBVA)
+- Insert sobre una base que no existe
 
 
 ### 2.1.1. Conexion Robomongo a MongoDB en AWS
@@ -69,7 +69,8 @@ Desde Robomongo **Create**:
 | Address | [IP AWS](#data) |
 | Port | 27017 |
 
-Desde Robomongo **Query Simples**:
+
+### 2.1.2. Query Simples desde Robomongo
 
 
 ```javascript
@@ -106,6 +107,9 @@ db.places.find({
    })
  */
 ```
+
+Insert sobre una base que no existe, archivo [02 Sin Equema](https://github.com/Pabloin/mean-stack-talk/blob/master/Places2Go-A-MongoDB/02%20Sin%20Equema.js)
+
 
 ###### Links de la sección
 - [MongoDB Geospatial Tutorial](https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/)
