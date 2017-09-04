@@ -288,6 +288,39 @@ $ sudo docker logs 6b0ace04738b -f
 
 
 
+## 3. Node.JS y Express
+
+### 3.1. Instalar Node.JS y crear un proyecto vacio
+
+Si instanalmos NodeJS desde los repo, nos va a dar la version estable v4.2.6
+NodeJS esta por su version 8.4.0 para instanalarla [Seguimos la Guía] (http://www.vozidea.com/como-instalar-node-js-en-ubuntu-o-debian)
+
+```sh
+$ sudo apt-get --purge remove node
+$ sudo apt-get --purge remove nodejs
+$ sudo apt-get install npm
+
+$ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+$ sudo apt-get install nodejs
+
+$ sudo apt-get install build-essential
+```
+
+### 3.2. Levantar el proyecto sin API de Google 
+
+
+
+### 3.3. Levantar el proyecto con API de Google 
+
+Se utilizara
+
+
+
+
+## 4. Angular
+
+
+
 ### Data
 
 - IP AWS 54.68.83.6
