@@ -364,7 +364,7 @@ $ slc loopback todo
 Nombramos al proyecto como **misPaces**
 
 ```sh
-$ cd misPaces
+$ cd misPlaces
 $ slc loopback:model
 ```
 
@@ -378,6 +378,8 @@ para probar toda la API Restful
 
 
 ### 3.4. Levantar el proyecto sin API de Google 
+
+Volvemos a la forma manual de armar la API:
 
 Compilamos el proyecto **places2go-api** y lo levantamos **node app.js**
 Como el proyecto utiliza la base datos, el docker de Mongo DB debe estar levantado.
@@ -394,12 +396,25 @@ $ node app.js
 
 **Observamos:** utilizzando el browser, podemos consultar por GET (http://localhost:3000/places)
 
-### 3.3. Levantar el proyecto con API de Google 
+### 3.5. Levantar el proyecto con API de Google 
 
-Se utilizara
+Para utilizar la [API de Google MAPS necesitamos gestionar una clave](https://developers.google.com/maps/documentation/geocoding/get-api-key?hl=es-419&authuser=1#key)  
 
+Una vez que tenemos la clave, para no dejarla harcodeada en nuestro código fuente,
+podemos setearla como variable de ambiente
 
+```sh
+$ export  GOOGLE_MAPS_API_KEY=77V7bNjGDIIFvTWghwl1BhQro1I2zv_w
+```
 
+Despues de esto, podemos levantar la aplicación versión **places2go-api-full** que utiliza la API de Google
+
+```sh
+$ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
+$ cd places2go-api-full
+$ npm install
+$ node app.js
+```
 
 ## 4. Angular
 
