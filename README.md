@@ -370,9 +370,7 @@ $ slc loopback:model
 
 Cargamos los siguientes valores:
 
-![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop.p ng)
-
-<a href="url"><img src=https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop.png)" align="left" width="120" ></a>
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop_600.png)
 
 
 y tenemos el [LoopBack API Explorer](http://localhost:3000/explorer/#/place) 
