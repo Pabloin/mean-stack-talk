@@ -370,10 +370,12 @@ $ slc loopback:model
 
 Cargamos los siguientes valores:
 
-![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop.png)
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop.p ng)
+
+<a href="url"><img src=https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop.png)" align="left" width="120" ></a>
 
 
-y tenemos el [LoopBack API Explorer](http://localhost:3000/explorer/#/place)
+y tenemos el [LoopBack API Explorer](http://localhost:3000/explorer/#/place) 
 para probar toda la API Restful
 
 
