@@ -345,7 +345,39 @@ $ node app.js
 
 Que escucha en (http://localhost:3500/hello)
 
-### 3.3. Levantar el proyecto sin API de Google 
+
+### 3.3. Creamos un proyecto nodeJS con LoopBack
+
+[https://loopback.io] es similar a Swagger con Java y entre otras cosas promete: **Quickly create dynamic end-to-end REST APIs.**
+
+Vale la pena mirarlo, creamos un proyecto
+
+
+```sh
+$ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
+$ mkdir demoLoopBack
+$ cd demoLoopBack
+$ npm install -g strongloop
+$ slc loopback todo
+```
+
+Nombramos al proyecto como **misPaces**
+
+```sh
+$ cd misPaces
+$ slc loopback:model
+```
+
+Cargamos los siguientes valores:
+
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop.png)
+
+
+y tenemos el [LoopBack API Explorer](http://localhost:3000/explorer/#/place)
+para probar toda la API Restful
+
+
+### 3.4. Levantar el proyecto sin API de Google 
 
 Compilamos el proyecto **places2go-api** y lo levantamos **node app.js**
 Como el proyecto utiliza la base datos, el docker de Mongo DB debe estar levantado.
