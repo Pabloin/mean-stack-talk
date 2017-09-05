@@ -370,12 +370,50 @@ $ slc loopback:model
 
 Cargamos los siguientes valores:
 
-![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongloop_600.png)
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongLoop_places2go.png)
+
 
 
 y tenemos el [LoopBack API Explorer](http://localhost:3000/explorer/#/place) 
 para probar toda la API Restful
 
+Si queremos conectarlo a MognoDB
+
+```sh
+$ npm install loopback-connector-mongodb  --save
+```
+
+Editamos  **/server/datasources.json** para agregar
+
+```javascript
+  "mydb": {
+    "host": "localhost",
+    "port": 27017,
+    "url":  "",
+    "database": "places2go",
+    "password": "",
+    "name": "",
+    "user": "",
+    "connector": "mongodb"  
+  }
+```
+
+Y en **model-config.json** vinculamos la entidad **places** al datasource
+
+```javascript
+  "places": {
+    "dataSource": "mydb",
+    "public": true
+  }
+```
+
+Y de esta forma se logra conectar **la api que te genera strongloop** a una base de datos **MongoDB existente**
+
+![]
+(https://raw.githubusercontent.com/Pabloin/Places2Go/master/places2go_strongLoop.png)
+
+Podemos ver más info en el siguiente [link de loopback](https://strongloop.com/strongblog/compare-express-restify-hapi-loopback/) 
+y este otro link para la [Coneccion LoopBack con MongoDB](https://loopback.io/doc/en/lb3/MongoDB-connector.html)
 
 ### 3.4. Levantar el proyecto sin API de Google 
 
