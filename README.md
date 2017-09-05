@@ -409,8 +409,7 @@ Y en **model-config.json** vinculamos la entidad **places** al datasource
 
 Y de esta forma se logra conectar **la api que te genera strongloop** a una base de datos **MongoDB existente**
 
-![]
-(https://raw.githubusercontent.com/Pabloin/Places2Go/master/places2go_strongLoop.png)
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/places2go_strongLoop.png)
 
 Podemos ver más info en el siguiente [link de loopback](https://strongloop.com/strongblog/compare-express-restify-hapi-loopback/) 
 y este otro link para la [Coneccion LoopBack con MongoDB](https://loopback.io/doc/en/lb3/MongoDB-connector.html)
