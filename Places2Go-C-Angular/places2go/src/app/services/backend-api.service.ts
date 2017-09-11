@@ -7,7 +7,7 @@ const API_REST_UB2 = 'http://54.68.83.6:3000';    // Ubuntu2
 const API_REST_U16 = 'http://54.70.170.17:3000';  // Ubuntu 16
 const API_REST_MAC = 'http://localhost:3000';     // PC local
 
-const API_REST     = API_REST_MAC;     // PC local
+const API_REST     = API_REST_UB2;     // PC local
 
 @Injectable()
 export class BackendApiService {
