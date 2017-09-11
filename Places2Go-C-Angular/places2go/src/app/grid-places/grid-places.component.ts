@@ -13,7 +13,7 @@ import { ViewPlaceComponent } from './view-place/view-place.component';
 export class GridPlacesComponent implements OnInit {
 
   constructor(private backendApiService : BackendApiService,
-              private detailView : ViewPlaceComponent) { }
+              public detailView : ViewPlaceComponent) { }
 
   places : Place[] = [];
 
