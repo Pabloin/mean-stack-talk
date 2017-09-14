@@ -18,13 +18,15 @@
 - Clonamos el repo **mean-stack-talk** de https://github.com/Pabloin
 
 ```sh
-$ cd Escritorio
+$ cd ~/Escritorio
 $ mkdir mean
 $ cd mean
 $ git clone https://github.com/Pabloin/mean-stack-talk.git
 $ cd mean-stack-talk
 $ ls -la
 ```
+
+Gist step 1.2: [places2go-backend_step_1_2.sh](https://gist.github.com/Pabloin/c6f00f499ce713bed791d7ce17987817)
 
 ### 1.3. Software Visual Studio Code
 
@@ -44,6 +46,8 @@ $ cd bin
 $ ./robo3t
 ```
 Dejamos el robo3t abierto
+
+Gist step 1.4: [places2go-backend_step_1_4.sh](https://gist.github.com/Pabloin/5b7623e14c219992e3e24dbf50af8ab7)
 
 
 ## 2. MongoDB
@@ -145,16 +149,19 @@ $ wget -O restaurants.json  https://raw.githubusercontent.com/mongodb/docs-asset
 $ ls -la
 ```
 
-
 **Step 02:** Import data en MongoDB
 ```sh
-$ mongoimport -d mongoExample -c restaurants --file restaurants.json
+$ mongoimport -d mongoExample -c restaurants   --file restaurants.json
 $ mongoimport -d mongoExample -c neighborhoods --file neighborhoods.json
 ```
 
 
+Gist step 01 y 02: [places2go-backend_step_2_13.sh](https://gist.github.com/Pabloin/8782e92644ea579d668b8f6cf7f6b32a)
+
+
+
 **Step 03:** Create Geo Index
-```sh
+```javascript
 db.neighborhoods.createIndex( { geometry : '2dsphere' } );
 db.restaurants.createIndex(   { location : '2dsphere'  } );
 db.neighborhoods.findOne();
@@ -163,7 +170,7 @@ db.restaurants.findOne();
 
 
 **Step 04:** Query Sorted with $nearSphere
-```sh
+```javascript
 db.restaurants.find({    
     location : {
         $nearSphere : {
@@ -179,7 +186,7 @@ db.restaurants.find({
 
 **Step 05:** Intersections: Restaurants in the Neighborhoods
 
-```sh
+```javascript
 var neighborhood = db.neighborhoods.findOne( { 
    geometry: { 
       $geoIntersects: { 
@@ -221,6 +228,10 @@ $ sudo apt-get install -y mongodb-org
 $ sudo service mongod start
 $ tail -f /var/log/mongodb/mongod.log 
 ```
+
+Gist step 2.2: [places2go-backend_step_2.2.sh](https://gist.github.com/Pabloin/bb094842206df95094ce8dd8f570f9c6)
+
+
 
 otros comandos de mongod
 
@@ -295,6 +306,9 @@ $ node --version
 $ npm --version
 ```
 
+Gist step 3.1: [places2go-backend_step_3.1.sh](https://gist.github.com/Pabloin/ca42e47e2bfc2c070d6cba1e21e88b5e)
+
+
 ### 3.2. Creamos un proyecto nodeJS from scratch
 
 Con NodeJS y NPM instalado, creamos un proyecto from scratch con **npm init** que nos generara el **package.json**
@@ -319,7 +333,7 @@ $ cat package.json
 
 agergamos aplicación **hello**
 
-en un archivo nuevo **app.js** copiamos:
+en un archivo nuevo **index.js** copiamos:
 
 ```javascript
 var express = require('express')
@@ -340,10 +354,13 @@ app.listen(3500, function () {
 Ejecutamos la app con:
 
 ```sh
-$ node app.js
+$ node index.js
 ```
 
 Que escucha en (http://localhost:3500/hello)
+
+
+Gist step 3.2: [places2go-backend_step_3.2.sh](https://gist.github.com/Pabloin/6e4206b6d2788678b04a03085a6a16a9)
 
 
 ### 3.3. Creamos un proyecto nodeJS con LoopBack
@@ -367,6 +384,9 @@ Nombramos al proyecto como **misPaces**
 $ cd misPlaces
 $ slc loopback:model
 ```
+
+Gist step 3.3: [places2go-backend_step_3.3.sh](https://gist.github.com/Pabloin/daf482b158dc47c51a3d76926d36dcbb)
+
 
 Cargamos los siguientes valores:
 
@@ -463,6 +483,8 @@ $ cd place2go
 $ npm install
 $ npm start
 ```
+
+Gist step 4: [places2go-backend_step_4.sh](https://gist.github.com/Pabloin/a6c87388ef2350e126d23913697f6ada)
 
 
 ### Data
