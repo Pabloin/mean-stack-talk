@@ -10,6 +10,7 @@
 - [Place2Go Api]
 - [Place2Go BD]
 - https://hub.docker.com/u/pabloezequiel
+- https://gist.github.com/Pabloin/e3ae4df8a3199be6c2ec06867ca82136 (Clonador de Gist)
 
 
 ### 1.2. Clonamos el repo de GitHub 
