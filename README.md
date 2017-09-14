@@ -379,7 +379,7 @@ $ npm install -g strongloop
 $ slc loopback todo
 ```
 
-Nombramos al proyecto como **misPaces**
+Nombramos al proyecto como **misPlaces**
 
 ```sh
 $ cd misPlaces
