@@ -391,7 +391,7 @@ Gist step 3.3: [places2go-backend_step_3.3.sh](https://gist.github.com/Pabloin/d
 
 Cargamos los siguientes valores:
 
-![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/strongLoop_places2go.png)
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/StrongLoopPlaces2Go.png)
 
 
 
