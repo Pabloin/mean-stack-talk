@@ -375,7 +375,7 @@ Vale la pena mirarlo, creamos un proyecto
 $ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
 $ mkdir demoLoopBack
 $ cd demoLoopBack
-$ npm install -g strongloop
+$ sudo npm install -g strongloop
 $ slc loopback todo
 ```
 
