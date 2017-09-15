@@ -245,6 +245,8 @@ $ cat /etc/mongod.conf
 # $ mongod --dbpath /usr/local/var/data/db
 ```
 
+**nota:** puede ser necesario comentar en **/etc/mongod.conf** la linea **bind_ip=127.0.0.1** en el caso que se quiera acceder al mongo remotaente. Ejemplo: si tenemos el Mongo instalado en una instancia EC2 de Amazon y lo queremos invocar desde un cliente Robomongo desde nuestra PC
+
 ### 2.3. MongoDB instalado en Linux local desde un Docker
 
 En las imágenes linux tenemos instalado docker, con lo cual una de las formas más sencillas de poder utilizar MongoDB es a través de la instalación de una imagen docker:
