@@ -1,0 +1,20 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+
+  "mydb": {
+    "host": "localhost",
+    "port": 27017,
+    "url":  "",
+    "database": "places2go",
+    "password": "",
+    "name": "",
+    "user": "",
+    "connector": "mongodb"  
+  }
+
+}
+
+

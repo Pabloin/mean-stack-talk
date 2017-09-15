@@ -1,0 +1,26 @@
+{
+  "name": "places",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "addressFmt": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "loc": {
+      "type": "object"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
