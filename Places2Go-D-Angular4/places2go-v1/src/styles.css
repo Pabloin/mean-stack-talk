@@ -2,7 +2,8 @@
 @import "~font-awesome/css/font-awesome.css";
 
 
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files *
+/*
 body {
     background:url(assets/images/bg.jpg), #000;
     background-size:cover;
@@ -12,4 +13,12 @@ body {
     color: #fff;
   }
   
+*/
 
+body {
+  padding-top: 5rem;
+}
+.starter-template {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
