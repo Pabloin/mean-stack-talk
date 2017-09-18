@@ -9,6 +9,9 @@
 
 # NOTA: Necesito que exista el /tmp/places2go_logs con permisos de escritura
 
+# OTRA FORMA: Despues de copiar el script p2g-api.sh a /etc/init.d ejecutar:
+# sudo /etc/init.d/p2g-api.sh 
+#
 
 # node app.js
 # nodemon app.js
@@ -26,6 +29,7 @@ P2G_API_HOME=$P2G_HOME/mean-stack-talk/Places2Go-B-NodeJS/places2go-api-full
 
 
 echo "____________________________________________________" >> $P2G_API_LOGS/p2g_api.log
+echo "P2G_API_HOME: $P2G_HOME                             " >> $P2G_API_LOGS/p2g_api.log
 echo "$NOW Start places2g api from init.d                 " >> $P2G_API_LOGS/p2g_api.log
 
 
