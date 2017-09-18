@@ -161,27 +161,25 @@ Editar src/app/nav/nav.component.html y agregar:
   </ul>
   <ul class="nav navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="https://github.com/Pabloin"><i class="fa fa-medium" aria-hidden="true"></i></a>
+      <a class="nav-link" href="https://github.com/Pabloin/mean-stack-talk"><i class="fa fa-medium" aria-hidden="true"></i></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="https://github.com/Pabloin"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a class="nav-link" href="https://github.com/Pabloin/mean-stack-talk"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="https://github.com/Pabloin"><i class="fa fa-github" aria-hidden="true"></i></a>
+      <a class="nav-link" href="https://github.com/Pabloin/mean-stack-talk"><i class="fa fa-github" aria-hidden="true"></i></a>
     </li>
   </ul>
 </nav>
 ```
 
 
+[Commit asociado](https://github.com/Pabloin/mean-stack-talk/commit/3aeeac15e9eaacee93d04e54d908b256b22aca9a)
+
 # Resources
 
-- https://www.barbarianmeetscoding.com/blog/2016/03/25/getting-started-with-angular-2-step-by-step-1-your-first-component/
-- http://www.dotnetcurry.com/angularjs/1366/angular-4-app-typescript-bootstrap
-
-
-NO .... - https://ng-bootstrap.github.io/#/getting-started
-
+Basado en:
+https://medium.com/@beeman/tutorial-add-bootstrap-to-angular-cli-apps-b0a652f2eb2
 
 
 ### Angular 
@@ -195,3 +193,5 @@ NO .... - https://ng-bootstrap.github.io/#/getting-started
 - https://medium.com/@beeman/tutorial-add-bootstrap-to-angular-cli-apps-b0a652f2eb2 (Muy bueno)
 - https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
 - https://www.youtube.com/watch?v=xGgUC2PQJ3k
+
+
