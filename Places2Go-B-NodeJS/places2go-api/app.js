@@ -82,7 +82,7 @@ db.once('open', function() {
 
    app.listen(3000, function () {
      console.log('Places2go listening on port 3000!');
-     console.log('Test it with http://localhost:3000/places  ');
+     console.log('Test it with http://localhost:3000/places  (... may be there is an instance in AWS in http://54.68.83.6:3000/places... )');
    });
 
 
