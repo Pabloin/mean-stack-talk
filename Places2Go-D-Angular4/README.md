@@ -32,7 +32,7 @@ body {
 ```
 
 
-# Step #03: Add Bootstrap
+# Step #03: Add Bootstrap y font awesome
 
 Bootstrap por CDN
 
@@ -44,7 +44,8 @@ Bootstrap por CDN
 
 
 ```sh
-$ npm install --save @ng-bootstrap/ng-bootstrap
+npm install --save bootstrap@4.0.0-alpha.6 font-awesome
+
 
 ```
 
@@ -58,5 +59,21 @@ seguimos a https://ng-bootstrap.github.io/#/getting-started  (lo bueno es que no
 # Resources
 
 - https://www.barbarianmeetscoding.com/blog/2016/03/25/getting-started-with-angular-2-step-by-step-1-your-first-component/
-http://www.dotnetcurry.com/angularjs/1366/angular-4-app-typescript-bootstrap
-https://ng-bootstrap.github.io/#/getting-started
+- http://www.dotnetcurry.com/angularjs/1366/angular-4-app-typescript-bootstrap
+
+
+NO .... - https://ng-bootstrap.github.io/#/getting-started
+
+
+
+### Angular 
+
+- https://www.npmjs.com/package/angular-cli  (old)
+- https://www.npmjs.com/package/@angular/cli
+
+### Links: Boostrap en Angular 4: 
+
+
+- https://medium.com/@beeman/tutorial-add-bootstrap-to-angular-cli-apps-b0a652f2eb2 (Muy bueno)
+- https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
+- https://www.youtube.com/watch?v=xGgUC2PQJ3k
