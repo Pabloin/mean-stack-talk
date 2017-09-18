@@ -10,7 +10,7 @@ $ sudo npm install -g @angular/cli
 $ ng new places2go-v1
 $ # ng new place2go-v1 --style scss
 
-$ cd place2go-v1
+$ cd places2go-v1
 
 $ ng serve --open
 ```
@@ -47,6 +47,12 @@ body {
 ```sh
 npm install --save bootstrap@4.0.0-alpha.6 font-awesome
 ```
+
+$ npm install --save bootstrap@4.0.0-alpha.6 font-awesome
+├─┬ bootstrap@4.0.0-alpha.6
+│ ├── jquery@3.2.1
+│ └── tether@1.4.0
+└── font-awesome@4.7.0
 
 editamos src/styes.css
 
