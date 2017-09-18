@@ -90,6 +90,11 @@ body {
 }
 ```
 
+
+[Commit asociado] (https://github.com/Pabloin/mean-stack-talk/commit/c5c0f3e8b0fce8eb7ac1dfa4d6ab65d95fcb2967)
+
+
+
 generamos la NavBAR
 
 ```sh
