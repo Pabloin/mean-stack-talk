@@ -84,7 +84,83 @@ body {
 }
 ```
 
+generamos la NavBAR
 
+```sh
+ ng generate component nav
+```
+
+Genera el arbol:
+
+$ tree src
+src
+├── app
+│   ├── app.component.css
+│   ├── app.component.html
+│   ├── app.component.spec.ts
+│   ├── app.component.ts
+│   ├── app.module.ts
+│   └── nav
+│       ├── nav.component.css
+│       ├── nav.component.html
+│       ├── nav.component.spec.ts
+│       └── nav.component.ts
+├── assets
+│   ├── demo1-bootstrap
+│   │   ├── boot1.html
+│   │   ├── boot2.html
+│   │   └── boot3.html
+│   └── images
+│       └── bg.jpg
+├── environments
+│   ├── environment.prod.ts
+│   └── environment.ts
+├── favicon.ico
+├── index.html
+├── main.ts
+├── polyfills.ts
+├── styles.css
+├── test.ts
+├── tsconfig.app.json
+├── tsconfig.spec.json
+└── typings.d.ts
+
+
+Editar src/app/app.component.html y agregar al principio
+
+```html
+<app-nav></app-nav>
+```
+
+Editar src/app/nav/nav.component.html y agregar:
+
+```html
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+  <a class="navbar-brand" href="#">Angular CLI + Bootstrap</a>
+  <ul class="nav navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact</a>
+    </li>
+  </ul>
+  <ul class="nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/Pabloin"><i class="fa fa-medium" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/Pabloin"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="https://github.com/Pabloin"><i class="fa fa-github" aria-hidden="true"></i></a>
+    </li>
+  </ul>
+</nav>
+```
 
 
 # Resources
