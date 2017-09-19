@@ -15,6 +15,8 @@ $ cd places2go-v1
 $ ng serve --open
 ```
 
+**nota:**   si lo ejecutamos de una instancia EC2 se usa "ng serve --host 0.0.0.0 --port 4200 "
+
 # Step #02: Edit styless.css
 
 mean-stack-talk/Places2Go-D-Angular4/place2go-v1/src/styles.css
@@ -172,6 +174,55 @@ Editar src/app/nav/nav.component.html y agregar:
   </ul>
 </nav>
 ```
+
+
+****Ejercicio***
+
+Hacer el componente footer
+
+```sh
+ng g c footer
+```
+
+src/app/app.component.html
+```html
+<app-footer></app-footer>
+```
+
+src/app/footer/footer.component.html
+```html
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">
+      Made with <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>️ by beeman
+    </span>
+  </div>
+</footer>
+```
+
+
+src/app/footer/footer.component.css
+
+```css
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+```
+
+src/styles.css
+```css
+html {
+  position: relative;
+  min-height: 100%;
+}
+```
+
 
 
 [Commit asociado](https://github.com/Pabloin/mean-stack-talk/commit/3aeeac15e9eaacee93d04e54d908b256b22aca9a)
