@@ -230,7 +230,7 @@ html {
 
 
 
-# Step 04: Creamos Places2Go con Boostrap y NavBar
+# Step 04: Creamos Places2Go con Boostrap y NavBar, Home y About
 
 Comenzamos un proyecto nuevo siguiendo los pasos anteiores
 
@@ -247,6 +247,57 @@ ng g c home
 ng g c about
 ```
 
+
+
+# Step 05: Usando Routes desde el menu 
+
+Para vincular desde el menu al componente **about** necesitamos utilizar **routes**. Routes esta presente desde angual2+
+
+Editamos **app.modules.ts** con el codigo:
+
+```javascript
+import { RouterModule } from '@angular/router';
+
+export const routing = RouterModule.forRoot(
+  [
+//  { path : '',              component :  HomeComponent },
+    { path : 'home',          component :  HomeComponent  },
+    { path : 'about',         component :  AboutComponent }
+  ]
+);
+
+
+/*
+Agregar  routing en "imports":
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavComponent,
+    HomeComponent,
+    AboutComponent
+  ],
+  imports: [
+    BrowserModule,
+    routing
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+*/
+```
+
+y en **app.component.html** agregamos el tag **<router-outlet>** para habilitar el ruteo
+
+```html
+<!-- 
+    <app-home></app-home> 
+-->
+
+<router-outlet></router-outlet>
+```
+
+[Tutorial Routes Bueno](http://blog.ng-book.com/basic-routing-in-angular-2/)
 
 
 # Resources

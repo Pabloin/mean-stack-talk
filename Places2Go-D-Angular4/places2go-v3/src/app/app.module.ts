@@ -6,6 +6,17 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
+import { RouterModule } from '@angular/router';
+
+export const routing = RouterModule.forRoot(
+  [
+//    { path : '',              component :  HomeComponent },
+    { path : 'home',          component :  HomeComponent  },
+    { path : 'about',         component :  AboutComponent }
+  ]
+);
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +25,8 @@ import { AboutComponent } from './about/about.component';
     AboutComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]
