@@ -5,6 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start_nbk": "ng serve",
+    "start_aws": "ng serve --host 0.0.0.0 --port 4200 ",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
