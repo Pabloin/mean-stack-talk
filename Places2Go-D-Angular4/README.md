@@ -228,6 +228,27 @@ html {
 
 [Commit asociado](https://github.com/Pabloin/mean-stack-talk/commit/3aeeac15e9eaacee93d04e54d908b256b22aca9a)
 
+
+
+# Step 04: Creamos Places2Go con Boostrap y NavBar
+
+Comenzamos un proyecto nuevo siguiendo los pasos anteiores
+
+Usamos
+[Gist NavBar HTML](https://gist.github.com/Pabloin/329331e820dc3149d8f7599bbd048276)
+
+Luego seguimos generando home y about con
+[Gist About HTML](https://gist.github.com/Pabloin/3cb6a8beb73dac5d6c3e11f0da426c81)
+
+[Gist HOME HTML](https://gist.github.com/Pabloin/b2929cd5035c4275e4734c0135e740b3)
+
+```sh
+ng g c home
+ng g c about
+```
+
+
+
 # Resources
 
 Basado en:
