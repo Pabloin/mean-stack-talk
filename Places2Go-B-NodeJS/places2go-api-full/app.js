@@ -43,7 +43,8 @@ mongoose.Promise = global.Promise;
 
 // Google Maps API Client
 var googleMapsClient = require('@google/maps').createClient({
-    key : process.env.GOOGLE_MAPS_API_KEY
+    // key : process.env.GOOGLE_MAPS_API_KEY
+       key : "AIzaSyA77V7bNjGDIIFvTWghwl1BhQro1I2zv_w"
 });
 
 
