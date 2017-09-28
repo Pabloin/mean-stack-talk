@@ -92,6 +92,13 @@ $ cd jsonDataPlaces2Go
 $ mongoexport -d places2go -c places -o places.json
 $ ls -la
 ```
+Para importar (se puede agergar el --host 127.0.0.1 --port 27017 para bases remotas).
+
+```sh
+$ mongoimport -d places2go -c places --file places.json 
+```
+
+**importante:** Si los datos son georeferenciados, se debe agregar el geoIndex después de importar db.places.createIndex( { loc : '2dsphere' } ); 
 
 Ejercicios:
 
@@ -110,6 +117,9 @@ Ejercicios:
 // db.getCollection('places').find({ address : { $regex : "torre"}  },  {_id:false}).forEach(print)
 
 /*
+
+// db.places.createIndex( { loc : '2dsphere' } ); 
+
 var torreBBVA = [ -58.3700828,  -34.597803  ];
 
 db.places.find({
