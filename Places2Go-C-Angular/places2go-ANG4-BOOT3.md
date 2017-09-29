@@ -99,6 +99,7 @@ Simplemente agregamos en el **index.html** las referencias de **bootstrap** y **
 
 #### Opcion B: Bootstrap v3.3.7 desde NPM
 
+(Si se hizo el paso anterior.... revertirlo borrando el CDN del index.html)
 
 Rrequiere editar el **.angular-cli.json** para incluir los componentes estáticos en el empaquetado
 
@@ -124,6 +125,78 @@ Podemos edtar el  **.angular-cli.json** no olvidader que jQuery debe estar prime
     "../node_modules/jquery/dist/jquery.min.js",
     "../node_modules/bootstrap/dist/js/bootstrap.min.js"
   ],
+```
+
+# Step 04: NavBar de Bootstrap3 con Jquery, y Generacion de componentes con angular-cli
+
+Generamos un  la NavBAR con
+
+```sh
+ ng generate component nav
+```
+
+la incluimos en el **app.component.html** en la primera linea
+
+```html
+<app-nav></app-nav>
+```
+
+Tomamos una NavBar de [https://getbootstrap.com/docs/3.3/components/#navbar] y lo copiamos dentro de **nav.component.html**
+
+```html
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 ```
 
 
