@@ -65,3 +65,36 @@ Que genera el Two way binding
 
 - [Video Two Way Binding](https://www.youtube.com/watch?v=WjcL09xgo3o)
 - [Binding en Tutorial Oficial ](https://angular.io/guide/template-syntax#binding-syntax-an-overview)
+
+
+### Step 03: Bootstrap install
+
+Instalar boostrap en angular se puede hacer de tres formas principales, que están bien explicadas en post de medium [Using Bootstrap with Angular](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a)
+
+Las tres alternativas son:
+- a) Por CDN, o sea se utiliza bootstrap y jquery desde Internet sin instalarlo en nuestro proyecto. 
+- b) Desde NPM, o sea, se descarga como dependencia y se agrega
+- c) A través de una librería wrapper (Para Bootstrap4)
+
+#### Opcion A: Bootstrap v3.3.7 desde CDN
+
+Bootstrap3 es la versión estable, se puede instalar por CDN o por NPM. Link de [un buen post](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a) sobre esta instalación de boostrap
+
+Simplemente agregamos en el **index.html** las referencias de **bootstrap** y **jquery** por CDN, aca es bootsrap4 pero tambien es igual para bootstrap3 **IMPORTANTE** el jQuey tiene que esta primero... sino no funciona... 
+
+```html
+<!-- https code.jquery.com -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+```
+
+
+
