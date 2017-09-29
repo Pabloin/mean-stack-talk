@@ -97,4 +97,33 @@ Simplemente agregamos en el **index.html** las referencias de **bootstrap** y **
 ```
 
 
+#### Opcion B: Bootstrap v3.3.7 desde NPM
+
+
+Rrequiere editar el **.angular-cli.json** para incluir los componentes estáticos en el empaquetado
+
+```sh
+npm install bootstrap@3 jquery --save
+```
+
+Agregamos los estilos: Hay dos maneras, podemos editar el **styles.css**
+
+```css
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+```
+
+Podemos edtar el  **.angular-cli.json** no olvidader que jQuery debe estar primero en el orden:
+
+```javascript
+  "styles": [
+    "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    "styles.css",
+  ],
+  "scripts": [
+    "../node_modules/jquery/dist/jquery.min.js",
+    "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+  ],
+```
+
 
