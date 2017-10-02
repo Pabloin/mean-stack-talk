@@ -17,7 +17,7 @@ $ ng serve --open
 **nota:**   si lo ejecutamos de una instancia EC2 se usa "ng serve --host 0.0.0.0 --port 4200 "
 
 
-# Step 02: Angular Power: Two Way Binging [()] - Interpolation {{}} - events()
+## Step 02: Angular Power: Two Way Binging [()] - Interpolation {{}} - events()
 
 **Tipos de binging**
 - One-way from data source  to view target  (Interpolacion {{}} y Property Atributos [target]="expression" )
@@ -67,7 +67,7 @@ Que genera el Two way binding
 - [Binding en Tutorial Oficial ](https://angular.io/guide/template-syntax#binding-syntax-an-overview)
 
 
-### Step 03: Bootstrap install
+#### Step 03: Bootstrap install
 
 Instalar boostrap en angular se puede hacer de tres formas principales, que están bien explicadas en post de medium [Using Bootstrap with Angular](https://medium.com/codingthesmartway-com-blog/using-bootstrap-with-angular-c83c3cee3f4a)
 
@@ -127,7 +127,7 @@ Podemos edtar el  **.angular-cli.json** no olvidader que jQuery debe estar prime
   ],
 ```
 
-# Step 04: NavBar de Bootstrap3 con Jquery, y Generacion de componentes con angular-cli
+## Step 04: NavBar de Bootstrap3 con Jquery, y Generacion de componentes con angular-cli
 
 Generamos un  la NavBAR con
 
@@ -199,4 +199,67 @@ Tomamos una NavBar de [https://getbootstrap.com/docs/3.3/components/#navbar] y l
 </nav>
 ```
 
+Observamos que además del estilo bootstrap de la NavBar, también están activo los dropdown, lo cual significa que jQuery fue correctamente integrado a Angular4
+
+
+---
+# PART II: Place2Go Start the development!
+
+## Step 05: Ponemos la NavBar de Places2Go
+
+
+TBD .... Asumo que serán ruteadores home y about ...
+
+Reemplazamos en **nav.component.html** la NavBar por la de Places2Go que tiene a su vez la navegación interna
+
+```html
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">::Places2Go::</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/home">Home <span class="sr-only">(current)</span></a></li>
+  <!--  <li class="active"><a [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a></li>  -->     
+		
+		<li><a href="/grid-places">All Places</a></li>
+   <!-- <li><a [routerLink]="['/grid-places']">All Places</a></li> -->
+			
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"
+		              data-toggle="dropdown"
+					  role="button" 
+					  aria-haspopup="true" 
+					  aria-expanded="false">Maps <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/searchPlaces">Search Places</a></li>
+            <li><a href="/drawQueries" >Draw queries</a></li>
+            <li role="separator" class="divider"></li>
+	
+            <li><a href="/grid-places">All Places   </a></li>
+       <!-- <li><a [routerLink]="['/grid-places']">All Places</a></li> -->
+
+          </ul>
+        </li>
+ 
+         <li><a href="/about">About</a></li>
+    <!-- <li><a [routerLink]="['/about']">About</a></li> -->
+		 
+      </ul>
+  
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+```
 
