@@ -333,3 +333,52 @@ y en **app.component.html** modificamos para que sea la **Home de la app Places2
     <br/>
     <app-home></app-home> 
 ```
+
+
+## Step 06: ROUTERS (ii): Generamos el Router para los componentes Home y About 
+
+Agergamos la definicion del **router** en **app.moduler.ts**
+
+```javascript
+
+import { RouterModule } from '@angular/router';
+
+export const routing = RouterModule.forRoot(
+  [
+//  { path : '',              component :  HomeComponent },
+    { path : 'home',          component :  HomeComponent  },
+    { path : 'about',         component :  AboutComponent }
+  ]
+);
+
+
+/*
+Agregar  "routing" en "imports":
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavComponent,
+    AboutComponent,
+    HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    routing
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+*/
+```
+
+y en **app.component.html** agregamos el tag para habilitar el ruteo
+
+```html
+<!-- 
+    <app-home></app-home> 
+-->
+
+<router-outlet></router-outlet>
+```
