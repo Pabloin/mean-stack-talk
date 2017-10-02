@@ -324,3 +324,12 @@ contenido de **about.component.html**
 </div>
 
 ```
+
+
+y en **app.component.html** modificamos para que sea la **Home de la app Places2Go**
+
+```html
+    <app-nav></app-nav>
+    <br/>
+    <app-home></app-home> 
+```
