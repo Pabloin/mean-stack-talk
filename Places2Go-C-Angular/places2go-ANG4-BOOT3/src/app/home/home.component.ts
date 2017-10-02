@@ -1,19 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Place } from '../services/place'
+import { BackendApiService } from '../services/backend-api.service'
 
 @Component({
   selector: 'app-home',
+  providers: [ BackendApiService ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  // constructor() { }
+  constructor(private backendApiService : BackendApiService) { }
 
   places : Place[];
 
   ngOnInit() {
 
+    this.places = this.backendApiService.getPlacesHard()
+
+    /*
     this.places = [
       
             {
@@ -35,8 +41,7 @@ export class HomeComponent implements OnInit {
 
 
           ]
+          */
   }
 
 }
-
-

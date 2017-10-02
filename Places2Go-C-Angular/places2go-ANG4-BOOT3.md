@@ -527,3 +527,131 @@ En la **home.component.html** agregamos el HTML que tiene código que levanta la
   </div>
 ```
 
+## Step 07: DATOS - Listado de places - Mock (ii) Servicios, Inyeccion de Dependencias
+
+Generamos una clase de servicio
+
+```sh
+ng generate service services/backend-api
+```
+
+La clase de servicio le agregamos el metodo que retorna datos **getPlacesHard()**. Observar que el servicio es @Injectable()
+
+```javascript
+import { Injectable } from '@angular/core';
+import { Place } from './place'
+
+@Injectable()
+export class BackendApiService {
+
+  constructor() { }
+
+  getPlacesHard() : Place[] {
+
+    let places = [
+      
+            {
+              _id          : 1,
+              userName     : "Pablo API ",
+              address      : "Theatrito Kolon",
+              addressFmt   : "Teatro Colón",
+              latitude     : 1.234445,
+              longitude    : 2.444234,
+            },
+            {
+              _id          : 2,
+              userName     : "Pablo API",
+              address      : "Casa de color rosa con el presi adentro",
+              addressFmt   : "Casa Rosada",
+              latitude     : 1.525423,
+              longitude    : 2.22445,
+            },
+            {
+              _id          : 3,
+              userName     : "Pablo API",
+              address      : "¿Como se hace Dependencia de Injeccciones?",
+              addressFmt   : "Utilizando servicios @Injectable",
+              latitude     : 1.525423,
+              longitude    : 2.22445,
+            }
+
+          ]
+
+      return places
+  }
+}
+```
+
+Para agregar la dependecia de injecciones, debemos **@Injectable()** en **home.component.ts** debemos agregar:
+
+
+```javascript
+  
+  import { BackendApiService } from '../services/backend-api.service'
+
+  // constructor...
+  providers: [BackendApiService],
+  
+  // constructor...
+  constructor(private backendApiService : BackendApiService) { }
+  
+  
+  this.places = this.backendApiService.getPlacesHard()
+```
+
+o sea, nos queda:
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { Place } from '../services/place'
+import { BackendApiService } from '../services/backend-api.service'
+
+@Component({
+  selector: 'app-home',
+  providers: [ BackendApiService ],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+
+  // constructor() { }
+  constructor(private backendApiService : BackendApiService) { }
+
+  places : Place[];
+
+  ngOnInit() {
+
+    this.places = this.backendApiService.getPlacesHard()
+
+    /*
+    this.places = [
+      
+            {
+              _id          : 1,
+              userName     : "Pablo",
+              address      : "Theatrito Kolon",
+              addressFmt   : "Teatro Colón",
+              latitude     : 1.234445,
+              longitude    : 2.444234,
+            },
+            {
+              _id          : 1,
+              userName     : "Pablo",
+              address      : "Casa de color rosa con el presi adentro",
+              addressFmt   : "Casa Rosada",
+              latitude     : 1.525423,
+              longitude    : 2.22445,
+            }
+
+
+          ]
+          */
+  }
+
+}
+```
+
+
+Y se puede observar que los datos ahora son recuperados del mocke que está dentro del servicio y fué inyectado.
+El próximo paso es recuperar los datos desde la API REST.
+
