@@ -382,3 +382,148 @@ y en **app.component.html** agregamos el tag para habilitar el ruteo
 
 <router-outlet></router-outlet>
 ```
+
+
+## Step 07: DATOS - Listado de places - Mock (i) HTML y Modelo
+
+Agregamos una **clase** y un **servicio** para mostrar datos en un listado
+
+```sh
+ng generate class services/place
+```
+
+Le agregamos código de mock de datos
+
+```javascript
+export class Place {
+
+  _id          : any;
+  userName     : string;
+  address      : string;
+  addressFmt   : string;
+  latitude     : number;
+  longitude    : number;
+
+}
+```
+
+Modifiamos **home.component.ts** para tener una **places** poblada con una coleccion de datos 
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { Place } from '../services/place'
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+
+  constructor() { }
+
+  places : Place[];
+
+  ngOnInit() {
+
+    this.places = [
+      
+            {
+              _id          : 1,
+              userName     : "Pablo",
+              address      : "Theatrito Kolon",
+              addressFmt   : "Teatro Colón",
+              latitude     : 1.234445,
+              longitude    : 2.444234,
+            },
+            {
+              _id          : 1,
+              userName     : "Pablo",
+              address      : "Casa de color rosa con el presi adentro",
+              addressFmt   : "Casa Rosada",
+              latitude     : 1.525423,
+              longitude    : 2.22445,
+            }
+
+
+          ]
+  }
+
+}
+```
+
+En la **home.component.html** agregamos el HTML que tiene código que levanta la colección
+
+```html
+<!-- inicio container -->
+<div class="container">
+  
+  
+    <br/>
+  
+    <div class="card">
+  
+      <div class="card-header">
+        Featured
+      </div>
+  
+      <div class="card-block">
+  
+          <!--  TABLE INICIO -->
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Address</th>
+                <th>Address Fountd</th>
+                <th>latitude</th>
+                <th>longitude</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+              
+                  <tr *ngFor="let place of places">
+                      <th scope="row">1</th>
+                      <td>{{place.address}}</td>
+                      <td>{{place.addressFmt}}</td>
+                      <td>{{place.latitude}}</td>
+                      <td>{{place.longitude}}</td>
+                  </tr>
+              
+  
+              <!-- <tr>
+                <th scope="row">1</th>
+                <td>theatro kolon</td>
+                <td>Teatro Colón</td>
+                <td>22,432423</td>
+                <td>33,543441</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Caminito</td>
+                <td>caminito</td>
+                <td>22,112423</td>
+                <td>33,245521</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Entre Rios</td>
+                <td>Entre Rios</td>
+                <td>322,22233</td>
+                <td>322,32215</td>
+              </tr> -->
+              
+            </tbody>
+            </table>
+  
+          <!-- TABLE FIN -->
+  
+      </div>
+  
+    </div>
+  
+  
+  </div>
+```
+
