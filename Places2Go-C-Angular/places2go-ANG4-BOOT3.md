@@ -263,3 +263,64 @@ Reemplazamos en **nav.component.html** la NavBar por la de Places2Go que tiene a
 </nav>
 ```
 
+## Step 06: ROUTERS (i): Generamos los componentes Home y About 
+
+Generamos los compoentes **home** y **about** con **ng angular-cli**. Observar que usamos también la versión resumida
+
+```sh
+ ng generate component home
+ ng g c about
+```
+
+Luego: contenido de **home.component.html**
+
+```html
+<div class="container">
+
+  <p>
+    Where would you like to go?
+  </p>
+
+</div>
+
+<!---
+<app-search-places></app-search-places>
+-->
+```
+
+contenido de **about.component.html**
+
+```html
+<div class="container">
+
+<h3>Place2Go</h3>
+
+<p>Angular 4 Full Stack Demo </p>
+
+<ul>
+  <li>El proyecto aplica el <b>Mean Stack</b></li>
+  <li>Front-end generado con <b>Angular CLI</b></li>
+  <li><a href="http://localhost:3000/">Places2Go API REST</a>: Api del proyrcto</li>
+</ul>
+
+<p>Tecnologias aplicadas en el <b>Front-end</b></p>
+
+<ul>
+  <li><b>Angular 4:</b> Frontend framework </li>
+  <li><b>Bootstrap 3:</b> Estilos y Layout</li>
+  <li><b>Font Awesome:</b> Iconos</li>
+  <li><b>Angular2 Google Maps:</b> Mapas en el frontend</li>
+</ul>
+
+<p>Tecnologias aplicadas en el <b>Backend-end</b></p>
+
+<ul>
+  <li><b>Express.js:</b> Backend</li>
+  <li><b>Node.js:</b> Backend</li>
+  <li><b>Mongoose.js:</b> Acceso a la base MongoDB</li>
+  <li><b>MongoDB:</b> database</li>
+  <li><b>@google/maps:</b> Acceso a la api de Google desde NodeJS</li>
+</ul>
+</div>
+
+```
