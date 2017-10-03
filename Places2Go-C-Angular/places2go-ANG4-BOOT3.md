@@ -97,7 +97,7 @@ Simplemente agregamos en el **index.html** las referencias de **bootstrap** y **
 ```
 
 
-#### Opcion B: Bootstrap v3.3.7 desde NPM
+#### Opcion B: Bootstrap v3.3.7 desde NPM (y font-awesome )
 
 (Si se hizo el paso anterior.... revertirlo borrando el CDN del index.html)
 
@@ -105,6 +105,7 @@ Rrequiere editar el **.angular-cli.json** para incluir los componentes estático
 
 ```sh
 npm install bootstrap@3 jquery --save
+npm install font-awesome --save
 ```
 
 Agregamos los estilos: Hay dos maneras, podemos editar el **styles.css**
@@ -119,6 +120,7 @@ Podemos edtar el  **.angular-cli.json** no olvidader que jQuery debe estar prime
 ```javascript
   "styles": [
     "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+    "../node_modules/font-awesome/css/font-awesome.min.css",
     "styles.css",
   ],
   "scripts": [
@@ -761,7 +763,6 @@ export class BackendApiService {
 ```
 
 Finalmente reemplazamos el metodo que se invoca en **home.component.ts** 
-
 
 ```javascript
     // this.places = this.backendApiService.getPlacesHard()
