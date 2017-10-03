@@ -775,3 +775,84 @@ Finalmente reemplazamos el metodo que se invoca en **home.component.ts**
 
 Con esto, tenemos los resultados del JSON publicado desde AWS en el front, y demostramos como es el consumo de una API rest con GET
 
+
+## Step 09: SERVICIOS REST - Implementar toda la API de servicios :: POST y DELETE 
+
+En **backend-api.service.js** agregamos un POST y DELETE
+
+
+```javascript
+
+  /**
+   * POST /places
+   */
+  savePlace(place : Place) : Promise<any> {
+
+    // console.log("savePlace" + JSON.stringify(place));
+
+    return this.http.post(API_REST+'/places', place)
+       .toPromise()
+       .then(response => console.log("respuesta" + response) )
+       .catch(reason  => console.log(reason) );
+  }
+
+
+  /**
+   * DELETE /places/:id
+   */
+  deletePlace(place) : Promise<any> {
+
+    return this.http.delete(API_REST+"/places/"+place._id)
+        .toPromise()
+        .then()
+        .catch(reason => console.log(reason) );
+  }
+
+```
+
+
+En **home.component.js** agregamos un POST y DELETE
+
+
+```javascript
+
+
+  /**
+   * Baja Ficticia para cuidar el set de datos
+   */
+  deletePlace(place : Place) {
+    
+      console.log("home::deletePlace "+JSON.stringify(place))
+
+      var filtrados = this.places.filter( (item) => {
+            if (item != place) {
+                return item;
+            }
+      });
+
+      this.backendApiService.deletePlace(place)
+          .then( () => {  this.places = filtrados; }  )
+          .catch( reason => { console.log("ERROR PROMISER BY " + reason)});
+  }
+
+
+```
+
+En el front html, agregamos el boton de borrar **home.component.html** 
+
+```javascript
+
+    <tr *ngFor="let place of places">
+      <th scope="row">1</th>
+      <td>{{place.address}}</td>
+      <td>{{place.addressFmt}}</td>
+      <td>{{place.latitude}}</td>
+      <td>{{place.longitude}}</td>
+
+      <td><button type="button" class="btn btn-link" 
+                (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
+    </tr>
+
+
+```
+

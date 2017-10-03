@@ -56,8 +56,31 @@ export class BackendApiService {
            .toPromise()
            .then(response => response.json().map(this.jsonMongo2Place) )
            .catch(reason  => console.log(reason) );
-      }
+  }
 
+  /**
+   * POST /places
+   */
+  savePlace(place : Place) : Promise<any> {
+    
+        // console.log("savePlace" + JSON.stringify(place));
+    
+        return this.http.post(API_REST+'/places', place)
+           .toPromise()
+           .then(response => console.log("respuesta" + response) )
+           .catch(reason  => console.log(reason) );
+  }
+    
+  /**
+   * DELETE /places/:id
+   */
+  deletePlace(place) : Promise<any> {
+
+    return this.http.delete(API_REST+"/places/"+place._id)
+        .toPromise()
+        .then()
+        .catch(reason => console.log(reason) );
+  }
 
   /**
    * Adaptacion de los JSON segun su origen

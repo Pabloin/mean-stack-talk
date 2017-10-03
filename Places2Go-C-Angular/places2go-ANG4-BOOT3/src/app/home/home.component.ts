@@ -52,4 +52,23 @@ export class HomeComponent implements OnInit {
           */
   }
 
+  /**
+   * Baja Ficticia para cuidar el set de datos
+   */
+  deletePlace(place : Place) {
+    
+      console.log("home::deletePlace "+JSON.stringify(place))
+
+      var filtrados = this.places.filter( (item) => {
+            if (item != place) {
+                return item;
+            }
+      });
+
+      this.backendApiService.deletePlace(place)
+          .then( () => {  this.places = filtrados; }  )
+          .catch( reason => { console.log("ERROR PROMISER BY " + reason)});
+    }
+    
+
 }

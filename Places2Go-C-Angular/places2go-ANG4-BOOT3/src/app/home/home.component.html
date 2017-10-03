@@ -34,6 +34,7 @@
                 <th>Address Fountd</th>
                 <th>latitude</th>
                 <th>longitude</th>
+                <th>Del</th>
               </tr>
             </thead>
             <tbody>
@@ -45,6 +46,9 @@
                 <td>{{place.addressFmt}}</td>
                 <td>{{place.latitude}}</td>
                 <td>{{place.longitude}}</td>
+
+                <td><button type="button" class="btn btn-link" 
+                          (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
               </tr>
          
             
