@@ -9,12 +9,19 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 
 import { RouterModule } from '@angular/router';
+import { DrawQueriesComponent } from './ggmaps/draw-queries/draw-queries.component';
+import { SearchPlacesComponent } from './ggmaps/search-places/search-places.component';
+
+
+import { AgmCoreModule } from '@agm/core';
 
 export const routing = RouterModule.forRoot(
   [
     { path : '',              component :  HomeComponent },
     { path : 'home',          component :  HomeComponent  },
-    { path : 'about',         component :  AboutComponent }
+    { path : 'about',         component :  AboutComponent },
+    { path : 'searchPlaces',  component :  SearchPlacesComponent },
+    { path : 'drawQueries',   component :  DrawQueriesComponent }
   ]
 );
 
@@ -23,14 +30,20 @@ export const routing = RouterModule.forRoot(
     AppComponent,
     NavComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    DrawQueriesComponent,
+    SearchPlacesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey : 'AIzaSyA77V7bNjGDIIFvTWghwl1BhQro1I2zv_w',
+    })  
   ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })

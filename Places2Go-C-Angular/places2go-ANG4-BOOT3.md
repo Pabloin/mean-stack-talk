@@ -865,3 +865,87 @@ En el front html, agregamos el boton de borrar **home.component.html**. Observar
       </tr>
 ```
 
+---
+# PART III: Place2Go with Google MAPS
+
+Agregamos la capacidad de Google Maps en el front end. Para eso utilizaremos la librerìa [Angular Google Maps (AGM)](https://angular-maps.com/). 
+
+
+Realizaremos dos páginas:
+- **drawQueries**: Que nos mostrará en un mapa, todos los lugares de la base de datos mongo
+- **search-places**: Que ingresamos el nombre de un lugar, consulta en Google Maps la geo referenciación y lo muestra en el mapa
+
+Comencemos 
+
+```sh
+ng g c ggmaps/draw-queries
+ng g c ggmaps/search-places
+```
+
+que nos crea: (observar que también nos modifica **update src/app/app.module.ts** lo cual es bueno)
+
+```sh
+.
+... 
+├── app.module.ts   (...updated...)
+│
+├── ggmaps
+├── draw-queries
+│   ├── draw-queries.component.css
+│   ├── draw-queries.component.html
+│   ├── draw-queries.component.spec.ts
+│   └── draw-queries.component.ts
+└── search-places
+    ├── search-places.component.css
+    ├── search-places.component.html
+    ├── search-places.component.spec.ts
+    └── search-places.component.ts
+```
+
+Y hacemos primerlo el **draw-queries**
+
+## Step 10: GOOGLE MAPS: Draw queries
+
+Basado en [Doc oficial Angular Google Maps(AGM)](https://angular-maps.com/guides/getting-started/).
+
+Instalamos Angular Google Maps
+
+```sh
+npm install @agm/core --save
+```
+
+Setup @NgModule en **src/app/app.module.ts** e importamos el **AgmCoreModule**. Ademas tenemos que agergar nuestra [API KEY de GOOGLE MAPS](https://developers.google.com/maps/documentation/javascript/get-api-key?hl=en#key) que tenemos que generarnos
+
+Entondes, agegamos en el **import** y en el **router** las nuevas pagingas
+
+```javascript
+import { AgmCoreModule } from '@agm/core';
+
+export const routing = RouterModule.forRoot(
+  [
+    { path : '',              component :  HomeComponent },
+    { path : 'home',          component :  HomeComponent  },
+    { path : 'about',         component :  AboutComponent },
+    { path : 'searchPlaces',  component :  SearchPlacesComponent },
+    { path : 'drawQueries',   component :  DrawQueriesComponent }
+  ]
+);
+
+....
+
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    routing,
+    AgmCoreModule.forRoot({
+      apiKey : 'API_KEY',
+    })  
+  ],
+```
+
+En este punto nodes debería funcionar la navegacion desde el menu las páginas creadas **http://localhost:4300/searchPlaces** y **http://localhost:4300/drawQueries**
+
+
+
+
