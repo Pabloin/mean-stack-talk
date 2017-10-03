@@ -345,7 +345,7 @@ import { RouterModule } from '@angular/router';
 
 export const routing = RouterModule.forRoot(
   [
-//  { path : '',              component :  HomeComponent },
+    { path : '',              component :  HomeComponent },
     { path : 'home',          component :  HomeComponent  },
     { path : 'about',         component :  AboutComponent }
   ]
@@ -654,4 +654,5 @@ export class HomeComponent implements OnInit {
 
 Y se puede observar que los datos ahora son recuperados del mocke que está dentro del servicio y fué inyectado.
 El próximo paso es recuperar los datos desde la API REST.
+
 
