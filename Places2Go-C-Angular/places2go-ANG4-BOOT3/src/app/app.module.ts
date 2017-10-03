@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 
 export const routing = RouterModule.forRoot(
   [
-//  { path : '',              component :  HomeComponent },
+    { path : '',              component :  HomeComponent },
     { path : 'home',          component :  HomeComponent  },
     { path : 'about',         component :  AboutComponent }
   ]
