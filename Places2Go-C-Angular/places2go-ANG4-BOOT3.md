@@ -838,21 +838,30 @@ En **home.component.js** agregamos un POST y DELETE
 
 ```
 
-En el front html, agregamos el boton de borrar **home.component.html** 
+En el front html, agregamos el boton de borrar **home.component.html**. Observar que agregamos un **poco de Bootstrap** responsive para mostrar como se borran columnas cuando se achican las pantallas... 
 
 ```javascript
 
-    <tr *ngFor="let place of places">
-      <th scope="row">1</th>
-      <td>{{place.address}}</td>
-      <td>{{place.addressFmt}}</td>
-      <td>{{place.latitude}}</td>
-      <td>{{place.longitude}}</td>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Address</th>
+        <th class="hidden-xs">Address Fountd</th>
+        <th class="hidden-xs hidden-sm hidden-md">[ Lat, Lng ]</th>
+        <th>Del</th>
+      </tr>
+    </thead>
+    <tbody>
 
-      <td><button type="button" class="btn btn-link" 
-                (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
-    </tr>
+      
+      <tr *ngFor="let place of places">
+        <th scope="row">1</th>
+        <td>{{place.address}}</td>
+        <td class="hidden-xs">{{place.addressFmt}}</td>
+        <td class="hidden-xs hidden-sm hidden-md"> <small>[ {{place.latitude}} , {{place.longitude}} ] </small></td>
 
-
+        <td><button type="button" class="btn btn-link" 
+                  (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
+      </tr>
 ```
 

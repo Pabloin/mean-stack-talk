@@ -31,21 +31,19 @@
               <tr>
                 <th>#</th>
                 <th>Address</th>
-                <th>Address Fountd</th>
-                <th>latitude</th>
-                <th>longitude</th>
+                <th class="hidden-xs">Address Fountd</th>
+                <th class="hidden-xs hidden-sm hidden-md">[ Lat, Lng ]</th>
                 <th>Del</th>
               </tr>
             </thead>
             <tbody>
-              
+
              
               <tr *ngFor="let place of places">
                 <th scope="row">1</th>
                 <td>{{place.address}}</td>
-                <td>{{place.addressFmt}}</td>
-                <td>{{place.latitude}}</td>
-                <td>{{place.longitude}}</td>
+                <td class="hidden-xs">{{place.addressFmt}}</td>
+                <td class="hidden-xs hidden-sm hidden-md"> <small>[ {{place.latitude}} , {{place.longitude}} ] </small></td>
 
                 <td><button type="button" class="btn btn-link" 
                           (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
