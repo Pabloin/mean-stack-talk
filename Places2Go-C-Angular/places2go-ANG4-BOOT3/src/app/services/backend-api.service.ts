@@ -52,10 +52,10 @@ export class BackendApiService {
    */
   getPlaces() : Promise<Place[]> {
     
-        return this.http.get(API_REST+'/places')
-           .toPromise()
-           .then(response => response.json().map(this.jsonMongo2Place) )
-           .catch(reason  => console.log(reason) );
+      return this.http.get(API_REST+'/places')
+          .toPromise()
+          .then(response => response.json().map(this.jsonMongo2Place) )
+          .catch(reason  => console.log(reason) );
   }
 
   /**
@@ -63,12 +63,12 @@ export class BackendApiService {
    */
   savePlace(place : Place) : Promise<any> {
     
-        // console.log("savePlace" + JSON.stringify(place));
-    
-        return this.http.post(API_REST+'/places', place)
-           .toPromise()
-           .then(response => console.log("respuesta" + response) )
-           .catch(reason  => console.log(reason) );
+      // console.log("savePlace" + JSON.stringify(place));
+  
+      return this.http.post(API_REST+'/places', place)
+          .toPromise()
+          .then(response => console.log("respuesta" + response) )
+          .catch(reason  => console.log(reason) );
   }
     
   /**
@@ -76,10 +76,22 @@ export class BackendApiService {
    */
   deletePlace(place) : Promise<any> {
 
-    return this.http.delete(API_REST+"/places/"+place._id)
-        .toPromise()
-        .then()
-        .catch(reason => console.log(reason) );
+      return this.http.delete(API_REST+"/places/"+place._id)
+          .toPromise()
+          .then()
+          .catch(reason => console.log(reason) );
+  }
+
+  /**
+   * GET /geocode/:addres
+   * Api de Google Map
+   */
+  getGeocode(address : string) : Promise<any> {
+    
+      return this.http.get(API_REST+'/geocode/'+address)
+          .toPromise()
+          .then(response => this.jsonGoogle2Place(address, response.json()) )
+          .catch(reason  => console.log(reason) );
   }
 
   /**
@@ -87,17 +99,32 @@ export class BackendApiService {
    */
   private jsonMongo2Place(item, index) : Place {
     
-          let place = new Place();
+      let place = new Place();
+
+      place._id         = item._id;
+      place.address     = item.address;
+      place.addressFmt  = item.addressFmt;
+      place.longitude   = item.loc.coordinates[0];
+      place.latitude    = item.loc.coordinates[1];
+
+      // console.log("jsonMongo2Place("+index+") " + place.address);
     
-          place._id         = item._id;
-          place.address     = item.address;
-          place.addressFmt  = item.addressFmt;
-          place.longitude   = item.loc.coordinates[0];
-          place.latitude    = item.loc.coordinates[1];
-    
-          // console.log("jsonMongo2Place("+index+") " + place.address);
-    
-          return place
-      }
+      return place
+  }
+
+  private jsonGoogle2Place(address, jsonGoogle) : Place {
+
+      let place = new Place();
+
+      place.address     = address;
+      place.addressFmt  = jsonGoogle.json.results[0].formatted_address;
+      place.latitude    = jsonGoogle.json.results[0].geometry.location.lat;
+      place.longitude   = jsonGoogle.json.results[0].geometry.location.lng;
+
+      // console.log("jsonGoogle2Place("+jsonGoogle+") " + place.address);
+
+      return place;
+  }
+      
 
 }

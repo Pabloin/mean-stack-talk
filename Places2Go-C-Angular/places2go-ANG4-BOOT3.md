@@ -1041,3 +1041,158 @@ Y el resultado queda como:
 ![Places2Go Ubicaciones de la Base](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step12.png)
 
 
+## Step 11: GOOGLE MAPS: Search Places con Acceso a la API GEO CODE DE Google
+
+Agregamos los Google Maps, vemos que se modifico: (API, Modelo, Front)
+
+```sh
+$ git status
+        modified:   search-places/search-places.component.css
+        modified:   search-places/search-places.component.html
+        modified:   search-places/search-places.component.ts
+        modified:   ../services/backend-api.service.ts
+```
+
+Primermo en el backend de servicios: **services/backend-api.service.ts** que hable con GEO code
+
+```javascript
+  /**
+   * GET /geocode/:addres
+   * Api de Google Map
+   */
+  getGeocode(address : string) : Promise<any> {
+    
+      return this.http.get(API_REST+'/geocode/'+address)
+          .toPromise()
+          .then(response => this.jsonGoogle2Place(address, response.json()) )
+          .catch(reason  => console.log(reason) );
+  }
+
+  private jsonGoogle2Place(address, jsonGoogle) : Place {
+
+      let place = new Place();
+
+      place.address     = address;
+      place.addressFmt  = jsonGoogle.json.results[0].formatted_address;
+      place.latitude    = jsonGoogle.json.results[0].geometry.location.lat;
+      place.longitude   = jsonGoogle.json.results[0].geometry.location.lng;
+
+      // console.log("jsonGoogle2Place("+jsonGoogle+") " + place.address);
+
+      return place;
+  }   
+```
+
+Segundo, el comoponente **search-places/search-places.component.ts** tiene que tomar los datos, de la API REST, para eso se le injecta el servicio de **BackendApiService**
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { BackendApiService } from '../../services/backend-api.service'
+import { Place } from '../../services/place'
+
+@Component({
+  selector: 'app-search-places',
+  providers: [ BackendApiService ],
+  templateUrl: './search-places.component.html',
+  styleUrls: ['./search-places.component.css']
+})
+export class SearchPlacesComponent implements OnInit {
+
+  constructor(private backendApiService:BackendApiService) { }
+
+  place2search : string;
+  place : Place;
+  msgSave : string;
+  ngOnInit() {
+  }
+
+  getGeocode() {
+    this.backendApiService.getGeocode(this.place2search)
+      .then( place => {
+        this.place = place;
+        this.msgSave = "";
+      });
+  }
+    
+  savePlace() {
+    this.backendApiService.savePlace(this.place)
+        .then( () => { 
+            this.msgSave = " => '"+this.place2search+"' fué grabado en la base."
+            console.log("Place SAVED "); 
+        } );
+  }
+
+}
+
+
+```
+
+Tercero, queda modificar el front
+
+CSS **search-places/search-places.component.css** 
+
+```css
+agm-map {
+    height: 300px;
+  }
+
+```
+
+Y el HTML **search-places/search-places.component.html**
+
+```html
+<div class="container">
+    
+    Place : <input type="text" [(ngModel)]="place2search" autocomplete="off" spellcheck="false" (keyup.enter)="getGeocode()">
+    
+    <button type="button"
+      [disabled]="!place2search"
+         (click)="getGeocode()"><span class="fa fa-search-plus"></span> Search
+    </button>
+    
+    <button type="button"
+         (click)="savePlace()"
+           *ngIf="place"><span class="fa fa-floppy-o"></span> Save
+    </button>          
+    
+    <br>Lugar a buscar : {{place2search}}
+    
+    <span *ngIf="place">
+    
+      <br>address input:    {{place.address}} <span class="text-primary" *ngIf="msgSave &&  place2search === place.address">{{msgSave}}</span>
+      <br>address formated: {{place.addressFmt}} 
+      <br>lat, lng: [ {{place.latitude}}, {{place.longitude}} ]
+    
+      <agm-map
+           [latitude]="place.latitude"
+          [longitude]="place.longitude"
+               [zoom]="11">
+
+          <agm-marker
+              [latitude]="place.latitude"
+              [longitude]="place.longitude"
+              [markerDraggable]="draggable">
+
+              <agm-info-window>
+                <p>{{place.address}}</p>
+                <small> [ {{place.latitude}}, {{place.longitude}} ]</small>
+              </agm-info-window>
+
+          </agm-marker>
+      </agm-map>
+    
+    </span>
+    
+</div>
+```
+
+Vemos el buscador de lugar, que no solamente recupera  
+
+![Places2Go Ubicaciones de la Base](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step14.png)
+
+
+
+
+
+
+
