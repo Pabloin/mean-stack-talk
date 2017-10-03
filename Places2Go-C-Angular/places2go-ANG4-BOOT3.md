@@ -1186,7 +1186,7 @@ Y el HTML **search-places/search-places.component.html**
 </div>
 ```
 
-Vemos el buscador de lugar, que no solamente recupera  
+Vemos el buscador de lugar, que no solamente recupera las coordenadas de geolocalizaciòn de Google, sino que también lo muestra en el mapa
 
 ![Places2Go Ubicaciones de la Base](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step14.png)
 
