@@ -984,7 +984,60 @@ El resultado es:
 
 A continuación, mostramos los datos que existen en nuestra base de datos....
 
+Modificamos **draw-queries.component.ts** para que utilize el servicio que recupera datos de la base: 
+
+```javascript
+
+```
+
+y para que recupere el  **draw-queries.component.html** 
+
+```html
+<div class="container">
+    
+    <button type="button"
+         (click)="getPlaces()"><span class="fa fa-map-marker"></span> Show Places
+    </button>
+    
+    Length: {{places.length}}
+    <br><br>
 
 
+
+    <agm-map [latitude]="lat" 
+            [longitude]="lng" 
+                 [zoom]="zoom">
+
+                 
+        <agm-marker 
+              *ngFor="let place of places"
+              [latitude]="place.latitude"
+              [longitude]="place.longitude"
+              [title]="places.address"
+              [markerDraggable]="draggable"
+              >
+            
+              <agm-info-window>
+                  <p>{{place.address}}</p>
+                  <small> [ {{place.latitude}}, {{place.longitude}} ]</small>
+                </agm-info-window>
+  
+        </agm-marker>
+
+    </agm-map>
+
+
+    <!-- 
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+    </agm-map> 
+    -->
+
+</div>
+```
+
+Y el resultado queda como: 
+
+![Places2Go Ubicaciones de la Base](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step12.png)
 
 
