@@ -16,8 +16,16 @@ export class HomeComponent implements OnInit {
   places : Place[];
 
   ngOnInit() {
+    this.getPlaces();
+  }
 
-    this.places = this.backendApiService.getPlacesHard()
+  getPlaces() {
+
+    // this.places = this.backendApiService.getPlacesHard()
+
+    this.backendApiService.getPlaces()
+       .then( response => { this.places = response } )
+       .catch( reason => { console.log("ERROR PROMISER BY " + reason)}) ;
 
     /*
     this.places = [

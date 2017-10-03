@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -17,10 +18,6 @@ export const routing = RouterModule.forRoot(
   ]
 );
 
-
-/*
-Agregar  "routing" en "imports":
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,23 +28,7 @@ Agregar  "routing" en "imports":
   imports: [
     BrowserModule,
     FormsModule,
-    routing
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-*/
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    AboutComponent,
-    HomeComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
+    HttpModule,
     routing
   ],
   providers: [],
