@@ -772,6 +772,9 @@ Finalmente reemplazamos el metodo que se invoca en **home.component.ts**
        .catch( reason => { console.log("ERROR PROMISER BY " + reason)}) ;
 ```
 
+La siguiente imagen muestra los datos recuperados desde AWS:
+
+![Places2Go datos de AWS](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step08.png)
 
 Con esto, tenemos los resultados del JSON publicado desde AWS en el front, y demostramos como es el consumo de una API rest con GET
 
@@ -945,6 +948,42 @@ export const routing = RouterModule.forRoot(
 ```
 
 En este punto nodes debería funcionar la navegacion desde el menu las páginas creadas **http://localhost:4300/searchPlaces** y **http://localhost:4300/drawQueries**
+
+
+Ahora agergamos el codigo En **draw-queries.component.ts** 
+
+```javascript
+  title: string = 'Mi primer Google Maps';
+  lat: number = 51.678418;
+  lng: number = 7.809007;
+```
+
+En **draw-queries.component.css**:
+```css
+agm-map {
+    height: 300px;
+  }
+```
+
+En  **draw-queries.component.html**:
+
+```html
+<h1>{{ title }}</h1>
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="lat" [longitude]="lng">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+```
+
+El resultado es:
+
+![Places2Go primer mapa](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step10.png)
+
+
+A continuación, mostramos los datos que existen en nuestra base de datos....
+
 
 
 
