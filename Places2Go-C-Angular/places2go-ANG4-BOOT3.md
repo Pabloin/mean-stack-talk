@@ -1192,7 +1192,233 @@ Vemos el buscador de lugar, que no solamente recupera las coordenadas de geoloca
 
 
 
+## Step 12: Último Paso - Listado "All Places" y Home sin código HTML
 
+En este paso tenemos en la home el código HTML de un listado precario. Vamos a hacer dos cosas: La primera, armar un componente **all-places** que contenga un listado de todos los lugares de la base, con la posibilidad tanto de eliminarlos a través de un botón, o de obtener más detalle a través de un popup.
 
+La segunda, en la home, eliminaremos todo el código html, y únicamente incluiremos los tags de los elementos que queremos incluir.
 
+Comencemos: genermos el compoennte de la grilla, el popup
 
+```ssh
+ng g c grid-places
+ng g c grid-places/view-place
+```
+
+El resultado, generado los siguientes archivos:
+
+```ssh
+$ tree
+.
+├── app
+│   ├── grid-places
+│   │   ├── grid-places.component.css
+│   │   ├── grid-places.component.html
+│   │   ├── grid-places.component.spec.ts
+│   │   ├── grid-places.component.ts
+│   │   └── view-place
+│   │       ├── view-place.component.css
+│   │       ├── view-place.component.html
+│   │       ├── view-place.component.spec.ts
+│   │       └── view-place.component.ts
+├── tsconfig.app.json
+```
+
+Ahora tomamos el codigo de la **home.component.html** y lo movemos a **grid-places.component.html**, y además agregamos el nuevo componente al **ruteador (app.module.ts)** para que pueda ser accedido dede el href de la NavVar
+
+app.module.ts ruteador queda
+
+```javascript
+export const routing = RouterModule.forRoot(
+  [
+    { path : '',              component :  HomeComponent },
+    { path : 'home',          component :  HomeComponent  },
+    { path : 'about',         component :  AboutComponent },
+    { path : 'grid-places',   component :  GridPlacesComponent },
+    { path : 'searchPlaces',  component :  SearchPlacesComponent },
+    { path : 'drawQueries',   component :  DrawQueriesComponent }
+  ]
+);
+```
+
+El compoente **grid-places.component.ts** queda:
+
+```javascript
+import { Component, OnInit } from '@angular/core';
+import { Place } from '../services/place'
+import { BackendApiService } from '../services/backend-api.service'
+
+@Component({
+  selector: 'app-grid-places',
+  providers: [ BackendApiService ],
+  templateUrl: './grid-places.component.html',
+  styleUrls:  ['./grid-places.component.css']
+})
+export class GridPlacesComponent implements OnInit {
+
+  constructor(private backendApiService : BackendApiService) { }
+
+    places : Place[];
+
+    ngOnInit() {
+      this.getPlaces();
+    }
+
+    getPlaces() {
+
+      this.backendApiService.getPlaces()
+          .then( response => { this.places = response } )
+          .catch( reason => { console.log("ERROR PROMISER BY " + reason)}) ;
+      
+          // this.places = this.backendApiService.getPlacesHard()
+
+          /*
+          this.places = [
+                  {
+                    _id          : 1,
+                    userName     : "Pablo",
+                    address      : "Theatrito Kolon",
+                    addressFmt   : "Teatro Colón",
+                    latitude     : 1.234445,
+                    longitude    : 2.444234,
+                  },
+                  {
+                    _id          : 1,
+                    userName     : "Pablo",
+                    address      : "Casa de color rosa con el presi adentro",
+                    addressFmt   : "Casa Rosada",
+                    latitude     : 1.525423,
+                    longitude    : 2.22445,
+                  }
+                ]
+          */
+    }
+
+    /**
+     * Baja Ficticia para cuidar el set de datos
+     */
+    deletePlace(place : Place) {
+      
+        console.log("home::deletePlace "+JSON.stringify(place))
+
+        var filtrados = this.places.filter( (item) => {
+              if (item != place) {
+                  return item;
+              }
+        });
+
+        this.backendApiService.deletePlace(place)
+            .then( () => {  this.places = filtrados; }  )
+            .catch( reason => { console.log("ERROR PROMISER BY " + reason)});
+      }
+        
+}
+```
+
+El html queda app.component.html
+
+```html
+  <!-- inicio container -->
+  <div class="container">
+        
+      <br/>
+      <div class="card">
+    
+        <div class="card-header"> Featured  </div>
+    
+        <div class="card-block">
+    
+            <!--  Table Inicio -->
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Address</th>
+                  <th class="hidden-xs">Address Fountd</th>
+                  <th class="hidden-xs hidden-sm hidden-md">[ Lat, Lng ]</th>
+                  <th>Del</th>
+                </tr>
+              </thead>
+              <tbody>
+  
+              <tr *ngFor="let place of places">
+                <th scope="row">1</th>
+                <td>{{place.address}}</td>
+                <td class="hidden-xs">{{place.addressFmt}}</td>
+                <td class="hidden-xs hidden-sm hidden-md"> <small>[ {{place.latitude}} , {{place.longitude}} ] </small></td>
+
+                <td><button type="button" class="btn btn-link" 
+                          (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
+              </tr>
+
+               <!--
+                <tr>
+                  <th scope="row">1</th>
+                  <td>theatro kolon</td>
+                  <td>Teatro Colón</td>
+                  <td>22,432423</td>
+                  <td>33,543441</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Caminito</td>
+                  <td>caminito</td>
+                  <td>22,112423</td>
+                  <td>33,245521</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Entre Rios</td>
+                  <td>Entre Rios</td>
+                  <td>322,22233</td>
+                  <td>322,32215</td>
+                </tr> 
+              -->
+                
+              </tbody>
+              </table>
+            <!-- TABLE FIN -->
+    
+        </div>
+      </div>
+    </div>
+```
+
+Pero la Home queda practimanete vacía con **home.component.ts**:
+
+```javscript
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {  }
+}
+```
+y con **home.component.html** que unicamente incluye al listado:
+
+```html
+<div class="container">
+  
+    <p>
+      Where would you like to go?
+    </p>
+  
+  </div>
+  
+  <!---
+  <app-search-places></app-search-places>
+  -->
+
+  <app-grid-places> </app-grid-places>
+```
+
+Sin embargo la misma info esta presente los dos compoentnes: **home** y **grid-places**: (obserar la URL)
+
+![Places2Go Grid Places y Home](https://github.com/Pabloin/Places2Go/blob/master/Step16.png)

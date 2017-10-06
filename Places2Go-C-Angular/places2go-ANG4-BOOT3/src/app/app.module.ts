@@ -14,12 +14,15 @@ import { SearchPlacesComponent } from './ggmaps/search-places/search-places.comp
 
 
 import { AgmCoreModule } from '@agm/core';
+import { GridPlacesComponent } from './grid-places/grid-places.component';
+import { ViewPlaceComponent } from './grid-places/view-place/view-place.component';
 
 export const routing = RouterModule.forRoot(
   [
     { path : '',              component :  HomeComponent },
     { path : 'home',          component :  HomeComponent  },
     { path : 'about',         component :  AboutComponent },
+    { path : 'grid-places',   component :  GridPlacesComponent },
     { path : 'searchPlaces',  component :  SearchPlacesComponent },
     { path : 'drawQueries',   component :  DrawQueriesComponent }
   ]
@@ -32,7 +35,9 @@ export const routing = RouterModule.forRoot(
     AboutComponent,
     HomeComponent,
     DrawQueriesComponent,
-    SearchPlacesComponent
+    SearchPlacesComponent,
+    GridPlacesComponent,
+    ViewPlaceComponent
   ],
   imports: [
     BrowserModule,
