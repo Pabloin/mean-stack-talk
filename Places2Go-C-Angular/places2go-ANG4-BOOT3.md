@@ -1456,18 +1456,17 @@ Componente **view-place.component.html**:  (observar que comentamos el sector de
 
             <!-- Google Map Ini -->
             <!-- <agm-map
-            [latitude]="place.latitude"
+             [latitude]="place.latitude"
             [longitude]="place.longitude"
             [zoom]="11">
-              <agm-map-marker
-                  [latitude]="place.latitude"
-                  [longitude]="place.longitude"
-                  [markerDraggable]="draggable">
-                  <agm-map-info-window>
+              <agm-marker
+                   [latitude]="place.latitude"
+                  [longitude]="place.longitude">
+                  <agm-info-window>
                     <p>{{place.address}}</p>
                     <small> [ {{place.latitude}}, {{place.longitude}} ]</small>
-                  </agm-map-info-window>
-              </agm-map-marker>
+                  </agm-info-window>
+              </agm-marker>
             </agm-map> -->
             <!-- Google Map Fin -->
 
@@ -1501,9 +1500,4 @@ Y en el listado **grid-places.component.html** agregamos el boton de **view** e 
 Después de agregar estas linas de código, el popup se levanta, aunque falta el traspaso de los datos, por lo que da el error.
 
 ![Places2Go Grid Popup de Detalle](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step18.png)
-
-
-
-
-
 
