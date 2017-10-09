@@ -1564,3 +1564,24 @@ agm-map {
   }
 ```
 
+Y el popup se ve con:
+
+![Places2Go Grid Home Final](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step20.png)
+
+## Cierre del proyecto: Agremamos el buscados también a la home
+
+Simplemente con
+
+```javascript
+  <div class="container">
+    <p>Where would you like to go?</p>
+  </div>
+
+  <app-search-places></app-search-places>
+  <br/>
+  <app-grid-places> </app-grid-places>
+```
+
+Quedando la Home de la siguiente manera:
+
+![Places2Go Grid Home Final](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step24.png)
