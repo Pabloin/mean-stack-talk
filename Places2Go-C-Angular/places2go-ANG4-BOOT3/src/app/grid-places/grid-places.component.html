@@ -1,10 +1,14 @@
   <!-- inicio container -->
   <div class="container">
         
+<app-view-place></app-view-place>
+
       <br/>
       <div class="card">
     
-        <div class="card-header"> Featured  </div>
+	    <div class="card-header">
+	       Saved Places [ {{places.length}} ];
+	    </div>
     
         <div class="card-block">
     
@@ -16,7 +20,8 @@
                   <th>Address</th>
                   <th class="hidden-xs">Address Fountd</th>
                   <th class="hidden-xs hidden-sm hidden-md">[ Lat, Lng ]</th>
-                  <th>Del</th>
+                  <th>View</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody>
@@ -25,8 +30,13 @@
                 <th scope="row">1</th>
                 <td>{{place.address}}</td>
                 <td class="hidden-xs">{{place.addressFmt}}</td>
+
                 <td class="hidden-xs hidden-sm hidden-md"> <small>[ {{place.latitude}} , {{place.longitude}} ] </small></td>
 
+                <td><button type="button" class="btn btn-link"
+                  data-toggle="modal" data-target="#myModal"
+                                  (click)="viewPlace(place)"><span class="fa fa-search-plus fa-lg"></span> view</button></td>
+                   
                 <td><button type="button" class="btn btn-link" 
                           (click)="deletePlace(place)"><span class="fa fa-trash-o fa-lg"></span> delete</button></td>
               </tr>

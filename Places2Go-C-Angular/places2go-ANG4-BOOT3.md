@@ -1422,3 +1422,88 @@ y con **home.component.html** que unicamente incluye al listado:
 Sin embargo la misma info esta presente los dos compoentnes: **home** y **grid-places**: (obserar la URL)
 
 ![Places2Go Grid Places y Home](https://github.com/Pabloin/Places2Go/blob/master/Step16.png)
+
+
+## Step 12: Último Paso - Listado "All Places" y "view-place" como popup
+
+En el compoenente **view-place** lo vamos a levantar de modo popup. Esto ejemplifica una forma de hacer pasaje de parametros entre componentes (Utilizaremos el **@Input()** ). Primero preparamos el popup del boton de detalle:
+
+Componente **view-place.component.html**:  (observar que comentamos el sector del mapa, para el pasaje de parámetros):
+
+```html
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel" *ngIf="place">{{place.address}}</h5>
+        <h5 class="modal-title" id="exampleModalLabel" *ngIf="!place">Detail</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" 
+                            (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div *ngIf="!place" class="alert alert-danger" role="alert">
+          <strong>Error</strong> No se pudo obtener el detalle
+        </div>
+
+        <div  *ngIf="place">
+            <p>{{place.addressFmt}}</p>
+
+            <!-- Google Map Ini -->
+            <!-- <agm-map
+            [latitude]="place.latitude"
+            [longitude]="place.longitude"
+            [zoom]="11">
+              <agm-map-marker
+                  [latitude]="place.latitude"
+                  [longitude]="place.longitude"
+                  [markerDraggable]="draggable">
+                  <agm-map-info-window>
+                    <p>{{place.address}}</p>
+                    <small> [ {{place.latitude}}, {{place.longitude}} ]</small>
+                  </agm-map-info-window>
+              </agm-map-marker>
+            </agm-map> -->
+            <!-- Google Map Fin -->
+
+            <small>Lat, Lng:[ {{place.latitude}}, {{place.longitude}} ]</small>
+       </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            (click)="close()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+```
+
+Y en el listado **grid-places.component.html** agregamos el boton de **view** e incluimos el popup:
+
+```html
+
+<app-view-place></app-view-place>
+
++                  <th>View</th>
+
++                  <td><button type="button" class="btn btn-link"
+                        data-toggle="modal" data-target="#myModal"
+                                  (click)="viewPlace(place)"><span class="fa fa-search-plus fa-lg"></span> view</button></td>
+```
+
+Después de agregar estas linas de código, el popup se levanta, aunque falta el traspaso de los datos, por lo que da el error.
+
+![Places2Go Grid Popup de Detalle](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step18.png)
+
+
+
+
+
+
