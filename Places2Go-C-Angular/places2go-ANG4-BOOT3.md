@@ -1501,3 +1501,66 @@ Después de agregar estas linas de código, el popup se levanta, aunque falta el
 
 ![Places2Go Grid Popup de Detalle](https://raw.githubusercontent.com/Pabloin/Places2Go/master/Step18.png)
 
+
+## Step 12: Último Paso - Listado "All Places" y "view-place" como popup, pasaje de datos entre componentes
+
+Vamos a pasar los datos al popup, que es equivalente al pasaje de datos entre componentes:
+
+Para el pasaje de datos entre **view-place.component.ts** compoentens observar el @Input y el **setPlace()** listo para recibir un parámetro
+
+```javascript
+import { Component, Input } from '@angular/core';
+import { Place} from '../../services/place';
+
+@Component({
+  selector: 'app-view-place',
+  templateUrl: './view-place.component.html',
+  styleUrls: ['./view-place.component.css']
+})
+export class ViewPlaceComponent {
+
+  @Input()  place : Place;
+
+  constructor() { }
+
+   setPlace(nuevoPlace : Place) {
+  // console.log("ViewPlaceComponent.setPlace("+JSON.stringify(nuevoPlace)+")");
+     this.place = nuevoPlace;
+   }
+
+  close() {
+    console.log("ViewPlaceComponent.close()");
+  }
+}
+```
+
+Luego el HTML y CSS del componente casi no se modifican: **grid-place.component.ts** con los puntos mas importantes a continuacion
+
+```javascript
+  import { ViewPlaceComponent } from './view-place/view-place.component';
+...
+  providers: [ BackendApiService, ViewPlaceComponent ],
+...
+  constructor(private backendApiService : BackendApiService,
+              public detailView : ViewPlaceComponent) { }
+...
+  viewPlace(place : Place) {
+      this.detailView.setPlace(place);
+  }
+
+```
+Luego el HTML y CSS del componente casi no se modifican: **grid-place.component.html** 
+cuando incluimos, le decimos que el la variable interna del pupup **place** agregue el contenido del **detailView.place**
+
+```html
+<app-view-place [place]="detailView.place"></app-view-place>
+```
+
+y falta solo el css para que se vea el mapa:
+
+```css
+agm-map {
+    height: 300px;
+  }
+```
+

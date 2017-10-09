@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Place } from '../services/place'
+import { ViewPlaceComponent } from './view-place/view-place.component';
 import { BackendApiService } from '../services/backend-api.service'
 
 @Component({
   selector: 'app-grid-places',
-  providers: [ BackendApiService ],
+  providers: [ BackendApiService, ViewPlaceComponent ],
   templateUrl: './grid-places.component.html',
   styleUrls:  ['./grid-places.component.css']
 })
 export class GridPlacesComponent implements OnInit {
 
-  constructor(private backendApiService : BackendApiService) { }
+  constructor(private backendApiService : BackendApiService,
+              public detailView : ViewPlaceComponent) { }
 
-    places : Place[];
+  places : Place[] = [];
 
     ngOnInit() {
       this.getPlaces();
@@ -66,4 +68,8 @@ export class GridPlacesComponent implements OnInit {
             .catch( reason => { console.log("ERROR PROMISER BY " + reason)});
       }
         
+
+  viewPlace(place : Place) {
+      this.detailView.setPlace(place);
+  }
 }
