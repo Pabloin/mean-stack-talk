@@ -36,13 +36,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/places2go');
+//mongoose.connect('mongodb://54.68.83.6:27017/places2go');
 
 var db = mongoose.connection;
 mongoose.Promise = global.Promise;
 
 // Google Maps API Client
 var googleMapsClient = require('@google/maps').createClient({
-    key : process.env.GOOGLE_MAPS_API_KEY
+    // key : process.env.GOOGLE_MAPS_API_KEY
+       key : "AIzaSyA77V7bNjGDIIFvTWghwl1BhQro1I2zv_w"
 });
 
 
@@ -147,6 +149,9 @@ db.once('open', function() {
 
 console.log("#000: Places2go: Contexto ", process.env.GOOGLE_MAPS_API_KEY);
 console.log("#003: Places2go: Iniciando la API REST ....");
+console.log("Look it at http://localhost:3000        ..... | API DOC ....");
+console.log("Look it at http://localhost:3000/places ..... | other AWS Version probably in http://54.68.83.6:3000/places ....");
+
 
 
 

@@ -1,0 +1,45 @@
+<div class="container">
+    
+    Place : <input type="text" [(ngModel)]="place2search" autocomplete="off" spellcheck="false" (keyup.enter)="getGeocode()">
+    
+    <button type="button"
+      [disabled]="!place2search"
+         (click)="getGeocode()"><span class="fa fa-search-plus"></span> Search
+    </button>
+    
+    <button type="button"
+         (click)="savePlace()"
+           *ngIf="place"><span class="fa fa-floppy-o"></span> Save
+    </button>          
+    
+    <br>Lugar a buscar : {{place2search}}
+    
+    <span *ngIf="place">
+    
+      <br>address input:    {{place.address}} <span class="text-primary" *ngIf="msgSave &&  place2search === place.address">{{msgSave}}</span>
+      <br>address formated: {{place.addressFmt}} 
+      <br>lat, lng: [ {{place.latitude}}, {{place.longitude}} ]
+    
+      <agm-map
+           [latitude]="place.latitude"
+          [longitude]="place.longitude"
+               [zoom]="11">
+
+          <agm-marker
+              [latitude]="place.latitude"
+              [longitude]="place.longitude"
+              [markerDraggable]="draggable">
+
+              <agm-info-window>
+                <p>{{place.address}}</p>
+                <small> [ {{place.latitude}}, {{place.longitude}} ]</small>
+              </agm-info-window>
+
+          </agm-marker>
+      </agm-map>
+    
+    </span>
+    
+</div>
+
+

@@ -45,6 +45,8 @@ $ ./robo3t
 ```
 Dejamos el robo3t abierto
 
+Gist step 1.4: [places2go-backend_step_1_4.sh](https://gist.github.com/Pabloin/5b7623e14c219992e3e24dbf50af8ab7)
+
 
 ## 2. MongoDB
 
@@ -87,6 +89,13 @@ $ cd jsonDataPlaces2Go
 $ mongoexport -d places2go -c places -o places.json
 $ ls -la
 ```
+Para importar (se puede agergar el --host 127.0.0.1 --port 27017 para bases remotas).
+
+```sh
+$ mongoimport -d places2go -c places --file places.json 
+```
+
+**importante:** Si los datos son georeferenciados, se debe agregar el geoIndex después de importar db.places.createIndex( { loc : '2dsphere' } ); 
 
 Ejercicios:
 
@@ -105,6 +114,9 @@ Ejercicios:
 // db.getCollection('places').find({ address : { $regex : "torre"}  },  {_id:false}).forEach(print)
 
 /*
+
+// db.places.createIndex( { loc : '2dsphere' } ); 
+
 var torreBBVA = [ -58.3700828,  -34.597803  ];
 
 db.places.find({
@@ -145,16 +157,19 @@ $ wget -O restaurants.json  https://raw.githubusercontent.com/mongodb/docs-asset
 $ ls -la
 ```
 
-
 **Step 02:** Import data en MongoDB
 ```sh
-$ mongoimport -d mongoExample -c restaurants --file restaurants.json
+$ mongoimport -d mongoExample -c restaurants   --file restaurants.json
 $ mongoimport -d mongoExample -c neighborhoods --file neighborhoods.json
 ```
 
 
+Gist step 01 y 02: [places2go-backend_step_2_13.sh](https://gist.github.com/Pabloin/8782e92644ea579d668b8f6cf7f6b32a)
+
+
+
 **Step 03:** Create Geo Index
-```sh
+```javascript
 db.neighborhoods.createIndex( { geometry : '2dsphere' } );
 db.restaurants.createIndex(   { location : '2dsphere'  } );
 db.neighborhoods.findOne();
@@ -163,7 +178,7 @@ db.restaurants.findOne();
 
 
 **Step 04:** Query Sorted with $nearSphere
-```sh
+```javascript
 db.restaurants.find({    
     location : {
         $nearSphere : {
@@ -179,7 +194,7 @@ db.restaurants.find({
 
 **Step 05:** Intersections: Restaurants in the Neighborhoods
 
-```sh
+```javascript
 var neighborhood = db.neighborhoods.findOne( { 
    geometry: { 
       $geoIntersects: { 
@@ -222,6 +237,10 @@ $ sudo service mongod start
 $ tail -f /var/log/mongodb/mongod.log 
 ```
 
+Gist step 2.2: [places2go-backend_step_2.2.sh](https://gist.github.com/Pabloin/bb094842206df95094ce8dd8f570f9c6)
+
+
+
 otros comandos de mongod
 
 ```sh
@@ -232,6 +251,8 @@ $ cat /etc/mongod.conf
 # Otra forma de levantar mongodb
 # $ mongod --dbpath /usr/local/var/data/db
 ```
+
+**nota:** puede ser necesario comentar en **/etc/mongod.conf** la linea **bind_ip=127.0.0.1** en el caso que se quiera acceder al mongo remotaente. Ejemplo: si tenemos el Mongo instalado en una instancia EC2 de Amazon y lo queremos invocar desde un cliente Robomongo desde nuestra PC
 
 ### 2.3. MongoDB instalado en Linux local desde un Docker
 
@@ -295,6 +316,9 @@ $ node --version
 $ npm --version
 ```
 
+Gist step 3.1: [places2go-backend_step_3.1.sh](https://gist.github.com/Pabloin/ca42e47e2bfc2c070d6cba1e21e88b5e)
+
+
 ### 3.2. Creamos un proyecto nodeJS from scratch
 
 Con NodeJS y NPM instalado, creamos un proyecto from scratch con **npm init** que nos generara el **package.json**
@@ -319,7 +343,7 @@ $ cat package.json
 
 agergamos aplicación **hello**
 
-en un archivo nuevo **app.js** copiamos:
+en un archivo nuevo **index.js** copiamos:
 
 ```javascript
 var express = require('express')
@@ -340,12 +364,18 @@ app.listen(3500, function () {
 Ejecutamos la app con:
 
 ```sh
-$ node app.js
+$ node index.js
 ```
 
 Que escucha en (http://localhost:3500/hello)
 
 
+<<<<<<< HEAD
+=======
+Gist step 3.2: [places2go-backend_step_3.2.sh](https://gist.github.com/Pabloin/6e4206b6d2788678b04a03085a6a16a9)
+
+
+>>>>>>> 3204c14945a39bf713edd9a26ecf0574cadfb73f
 ### 3.3. Creamos un proyecto nodeJS con LoopBack
 
 [https://loopback.io] es similar a Swagger con Java y entre otras cosas promete: **Quickly create dynamic end-to-end REST APIs.**
@@ -357,6 +387,7 @@ Vale la pena mirarlo, creamos un proyecto
 $ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
 $ mkdir demoLoopBack
 $ cd demoLoopBack
+<<<<<<< HEAD
 $ npm install -g strongloop
 $ slc loopback todo
 ```
@@ -378,6 +409,71 @@ para probar toda la API Restful
 
 
 ### 3.4. Levantar el proyecto sin API de Google 
+=======
+$ sudo npm install -g strongloop
+$ slc loopback todo
+```
+
+Nombramos al proyecto como **misPlaces**
+
+```sh
+$ cd misPlaces
+$ slc loopback:model
+```
+
+Gist step 3.3: [places2go-backend_step_3.3.sh](https://gist.github.com/Pabloin/daf482b158dc47c51a3d76926d36dcbb)
+
+
+Cargamos los siguientes valores:
+
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/StrongLoopPlaces2Go.png)
+
+
+
+y tenemos el [LoopBack API Explorer](http://localhost:3000/explorer/#/place) 
+para probar toda la API Restful
+
+Si queremos conectarlo a MognoDB
+
+```sh
+$ npm install loopback-connector-mongodb  --save
+```
+
+Editamos  **/server/datasources.json** para agregar
+
+```javascript
+  "mydb": {
+    "host": "localhost",
+    "port": 27017,
+    "url":  "",
+    "database": "places2go",
+    "password": "",
+    "name": "",
+    "user": "",
+    "connector": "mongodb"  
+  }
+```
+
+Y en **model-config.json** vinculamos la entidad **places** al datasource
+
+```javascript
+  "places": {
+    "dataSource": "mydb",
+    "public": true
+  }
+```
+
+Y de esta forma se logra conectar **la api que te genera strongloop** a una base de datos **MongoDB existente**
+
+![Strong Loop Places2Go](https://raw.githubusercontent.com/Pabloin/Places2Go/master/places2go_strongLoop.png)
+
+Podemos ver más info en el siguiente [link de loopback](https://strongloop.com/strongblog/compare-express-restify-hapi-loopback/) 
+y este otro link para la [Coneccion LoopBack con MongoDB](https://loopback.io/doc/en/lb3/MongoDB-connector.html)
+
+### 3.4. Levantar el proyecto sin API de Google 
+
+Volvemos a la forma manual de armar la API:
+>>>>>>> 3204c14945a39bf713edd9a26ecf0574cadfb73f
 
 Compilamos el proyecto **places2go-api** y lo levantamos **node app.js**
 Como el proyecto utiliza la base datos, el docker de Mongo DB debe estar levantado.
@@ -392,17 +488,40 @@ $ node app.js
 
 **Observamos:** si la base estaba vacia, el driver **Mongoose** la crea, incluso con un indice geo referencial de acuerdo a lo indicado en el esquema.
 
-**Observamos:** utilizzando el browser, podemos consultar por GET (http://localhost:3000/places)
+**Observamos:** utilizando el browser, podemos consultar por GET (http://localhost:3000/places)
 
-### 3.3. Levantar el proyecto con API de Google 
+### 3.5. Levantar el proyecto con API de Google 
 
-Se utilizara
+Para utilizar la [API de Google MAPS necesitamos gestionar una clave](https://developers.google.com/maps/documentation/geocoding/get-api-key?hl=es-419&authuser=1#key)  
 
+Una vez que tenemos la clave, para no dejarla harcodeada en nuestro código fuente,
+podemos setearla como variable de ambiente
 
+```sh
+$ export  GOOGLE_MAPS_API_KEY=77V7bNjGDIIFvTWghwl1BhQro1I2zv_w
+```
 
+Despues de esto, podemos levantar la aplicación versión **places2go-api-full** que utiliza la API de Google
+
+```sh
+$ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-B-NodeJS
+$ cd places2go-api-full
+$ npm install
+$ node app.js
+```
 
 ## 4. Angular
 
+Levantamos el front en Angular
+
+```sh
+$ cd ~/Escritorio/mean/mean-stack-talk/Places2Go-C-Angular
+$ cd place2go
+$ npm install
+$ npm start
+```
+
+Gist step 4: [places2go-backend_step_4.sh](https://gist.github.com/Pabloin/a6c87388ef2350e126d23913697f6ada)
 
 
 ### Data
