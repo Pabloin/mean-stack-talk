@@ -498,7 +498,7 @@ Una vez que tenemos la clave, para no dejarla harcodeada en nuestro código fuen
 podemos setearla como variable de ambiente
 
 ```sh
-$ export  GOOGLE_MAPS_API_KEY=77V7bNjGDIIFvTWghwl1BhQro1I2zv_w
+$ export  GOOGLE_MAPS_API_KEY=4654654654654654654654654654654
 ```
 
 Despues de esto, podemos levantar la aplicación versión **places2go-api-full** que utiliza la API de Google
